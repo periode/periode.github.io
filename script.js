@@ -4,6 +4,7 @@ var stream;
 var video = document.querySelector('video');
 */
 document.addEventListener("DOMContentLoaded", function() { 
+	console.log("DOM fully loaded and parsed");
 /*
 	navigator.webkitGetUserMedia(
 		{video: true, audio: true}, // Options
