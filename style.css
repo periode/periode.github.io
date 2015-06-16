@@ -1,3 +1,9 @@
 body {
 	font-family: Trebuchet MS;
 }
+
+video {
+	border: 1px solid rgb(14, 168, 234);
+	width: 50%;
+	height: 50%
+}
