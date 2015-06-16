@@ -5,18 +5,7 @@ var video = document.querySelector('video');
 */
 document.addEventListener("DOMContentLoaded", function() { 
 	console.log("DOM fully loaded and parsed");
-/*
-	navigator.webkitGetUserMedia(
-		{video: true, audio: true}, // Options
-		function(localMediaStream) { // Success
 
-			stream = localMediaStream;
-			video.src = window.URL.createObjectURL(stream);
-		},
-		function(err) { // Failure
-			alert('getUserMedia failed: Code ' + err.code);
-		}
-	);*/
 	var video = document.querySelector("video");
 	var constraints = {audio: false, video: true};
 	navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||     navigator.mozGetUserMedia;
