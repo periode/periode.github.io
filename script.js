@@ -1,8 +1,3 @@
-/*
-var stream;
-//var video = document.getElementById('webcam');
-var video = document.querySelector('video');
-*/
 document.addEventListener("DOMContentLoaded", function() { 
 	console.log("DOM fully loaded and parsed");
 
