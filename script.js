@@ -25,6 +25,24 @@ document.addEventListener("DOMContentLoaded", function() {
 	navigator.getUserMedia(constraints, successCallback, errorCallback);
 });
 
-function record(){
-	
+function recordVideo(){
+	console.log("start recording");
+	streamRecorder = webcamstream.record();
+    setTimeout(stopRecording, 1000);
+}
+
+function stopRecording(){
+	streamRecorder.getRecordedData(saveVideoToServer);
+}
+
+function saveVideoToServer(){
+	var data = {};
+	data.video = videoblob;
+	data.metadata = 'test metadata';
+	data.action = "upload_video";
+	jQuery.post("/data", data, onSuccessSave);
+}
+
+function onSuccessSave(){
+	console.log("fukkin saved!");
 }
