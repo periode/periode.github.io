@@ -24,3 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	navigator.getUserMedia(constraints, successCallback, errorCallback);
 });
+
+function record(){
+	
+}
