@@ -1,3 +1,5 @@
+var webcamstream;
+
 document.addEventListener("DOMContentLoaded", function() { 
 	console.log("DOM fully loaded and parsed");
 
@@ -8,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	function successCallback(stream) 
 	{
 	  window.stream = stream; // stream available to console
+	  webcamstream = stream;
 	  if (window.URL) 
 	    {
 	         video.src = window.URL.createObjectURL(stream);
