@@ -4,12 +4,20 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<title>cam test</title>
 	<script language="JavaScript" src="script.js"></script>
+	<script language="JavaScript" src="whammy.js"></script>
 </head>
 <body>
 	<div id="container">
 		<h1>all those unanswered questions</h1>
 		<video autoplay></video>
 		<br />
-		<button type="button" onclick="recordVideo()">record</button>
+		<br />
+		<canvas width="320" height="240"></canvas>
+		<br />
+		<br />
+		<div id="video-preview"></div>
+		<button type="button" onclick="startRecording()">start recording</button>
+		<br />
+		<button type="button" onclick="stopRecording()">stop recording</button>
 	</div>
 </body>
