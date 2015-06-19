@@ -10,14 +10,17 @@
 	<div id="container">
 		<h1>all those unanswered questions</h1>
 		<video autoplay></video>
+		<canvas width='320' height='240'></canvas>
 		<br />
-		<br />
-		<canvas width="320" height="240"></canvas>
-		<br />
+		----------------------------------<br />
 		<br />
 		<div id="video-preview"></div>
-		<button type="button" onclick="startRecording()">start recording</button>
-		<br />
-		<button type="button" onclick="stopRecording()">stop recording</button>
+		<button type="button" onclick="startRecording()">start</button><br />
+		<div id ="questionContainer"></div><br />
+		<div id = "textInputContainer"></div>
+		-<br />
+		<button type="button" onclick="stopRecording()">stop</button><br />
+		-<br />
+		<button type="button" onclick="getJPEG()">fetch URL</button><br />
 	</div>
 </body>
