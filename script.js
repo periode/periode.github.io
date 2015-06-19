@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		asArray[i] = dataPNG.charCodeAt(i);
 	}
 
-	var blob = Blob([ asArray.buffer ], {type: "image/png"});
+	var blob = new Blob([ asArray.buffer ], {type: "image/png"});
 
 	//resuming animation
 	reqAnimFrame;
