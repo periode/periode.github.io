@@ -6,12 +6,39 @@ body{
 #title{
   position: absolute;
   top: 0%;
-  left: 35%;
+  left: 15%;
   width: 30%;
   font-family: Trebuchet MS;
-  font-size: 4em;
-  color: white;
-  text-align: center;
+  font-size: 56px;
+  color: black;
+  text-align: right;
+  padding: 0;
+  margin:0;
+}
+
+#artist{
+  font-family: Trebuchet MS;
+  color: black;
+}
+
+#audio, #video, #info{
+  position: relative;
+  float: left;
+  font-family: Trebuchet MS;
+  color: black;
+  top: 10%;
+}
+
+#audio{
+  left: 27%;
+}
+
+#video{
+  left: 34%;
+}
+
+#info{
+  left: 42%;
 }
 
 a{
