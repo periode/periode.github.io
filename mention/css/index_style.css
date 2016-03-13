@@ -3,6 +3,10 @@ body{
   padding:0;
 }
 
+canvas{
+  z-index: -1;
+}
+
 #title{
   position: absolute;
   top: 0%;
@@ -19,6 +23,10 @@ body{
 #artist{
   font-family: Trebuchet MS;
   color: black;
+}
+
+.selected_link{
+  font-style: italic;
 }
 
 #audio, #video, #info{
@@ -43,4 +51,26 @@ body{
 
 a{
   text-decoration: none;
+}
+
+.subtitle{
+  position:absolute;
+  font-family: Trebuchet MS;
+  text-align: center;
+  width: 30%;
+}
+
+#middle{
+  top: 22%;
+  left:35%;
+}
+
+#left{
+  top: 27%;
+  left:10%;
+}
+
+#right{
+  top: 27%;
+  right: 10%;
 }

@@ -1,0 +1,10 @@
+#statement{
+  position: absolute;
+  width: 40%;
+  left: 30%;
+  top: 30%;
+
+  color: black;
+  font-family: Trebuchet MS;
+  text-align: justify;
+}
