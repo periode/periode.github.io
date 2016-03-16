@@ -39,13 +39,8 @@ vertical-align: middle;
   background-color: black;
   width: 30%;
   height: 45px;
-  margin-left: 3%;
+  margin-left: 5%;
   margin-top: 2%;
-}
-
-#artist{
-  font-family: Trebuchet MS;
-  color: black;
 }
 
 .selected_link{
@@ -53,51 +48,70 @@ vertical-align: middle;
 }
 
 .hidden{
-  display: none;
+  opacity: 0;
+}
+
+.shown{
+  -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+   -moz-animation: fadein 2s; /* Firefox < 16 */
+    -ms-animation: fadein 2s; /* Internet Explorer */
+     -o-animation: fadein 2s; /* Opera < 12.1 */
+        animation: fadein 2s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
 
 #audio, #video, #info{
   position: relative;
   float: left;
-  font-family: Trebuchet MS;
+  left: 3%;
+  width: 80%;
+  font-family: Track;
   color: black;
   top: 10%;
+  margin-top: 4%;
 }
 
 #audio{
-  left: 2%;
+  /*top: 2%;*/
 }
 
 #video{
-  left: 6%;
+  /*left: 6%;*/
 }
 
 #info{
-  left: 11%;
+  /*left: 11%;*/
 }
 
 a{
+  color:black;
   text-decoration: none;
-}
-
-.subtitle{
-  position:absolute;
-  font-family: Trebuchet MS;
-  text-align: center;
-  width: 30%;
-}
-
-#middle{
-  top: 22%;
-  left:35%;
-}
-
-#left{
-  top: 27%;
-  left:10%;
-}
-
-#right{
-  top: 27%;
-  right: 10%;
 }

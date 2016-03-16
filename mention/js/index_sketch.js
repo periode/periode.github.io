@@ -77,7 +77,7 @@ function drawInitialSketch(){
 }
 
 function displayMenu(){
-  menu_audio.style.display = 'inline';
-  menu_video.style.display = 'inline';
-  menu_info.style.display = 'inline';
+  menu_audio.setAttribute('class', 'shown');
+  menu_video.setAttribute('class', 'shown');
+  menu_info.setAttribute('class', 'shown');
 }
