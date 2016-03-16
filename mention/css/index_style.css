@@ -1,23 +1,46 @@
+@font-face {
+  font-family: Track;
+  src: url(../fonts/Track.otf);
+}
+
+@font-face {
+  font-family: Track-Italic;
+  src: url(../fonts/TrackItalic.ttf);
+}
+
 body{
   margin:0;
   padding:0;
 }
 
 canvas{
-  z-index: -1;
+  /*z-index: -1;*/
 }
 
 #title{
-  position: absolute;
-  top: 0%;
-  left: 15%;
-  width: 30%;
-  font-family: Trebuchet MS;
-  font-size: 56px;
+  position: relative;
+  float:left;
+  left: 2%;
+  height: 60px;
+  font-family: Track;
+  font-size: 60px;
   color: black;
-  text-align: right;
-  padding: 0;
-  margin:0;
+  text-align: left;
+  margin-left: 1%;
+  margin-top: 2%;
+
+  display: table-cell;
+vertical-align: middle;
+}
+
+#first{
+  position: relative;
+  float: left;
+  background-color: black;
+  width: 30%;
+  height: 45px;
+  margin-left: 3%;
+  margin-top: 2%;
 }
 
 #artist{
@@ -29,6 +52,10 @@ canvas{
   font-style: italic;
 }
 
+.hidden{
+  display: none;
+}
+
 #audio, #video, #info{
   position: relative;
   float: left;
@@ -38,15 +65,15 @@ canvas{
 }
 
 #audio{
-  left: 27%;
+  left: 2%;
 }
 
 #video{
-  left: 34%;
+  left: 6%;
 }
 
 #info{
-  left: 42%;
+  left: 11%;
 }
 
 a{

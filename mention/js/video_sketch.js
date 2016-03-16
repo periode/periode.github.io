@@ -4,6 +4,8 @@ var dash_end;
 var dash_start_time;
 var dash_timer;
 
+var middle_line_top;
+
 function setup(){
   var cnv = createCanvas(windowWidth, windowHeight);
   cnv.position(0, 0);
@@ -13,11 +15,25 @@ function setup(){
   dash_start_time = millis();
   dash_timer = 50;
 
+  middle_line_top = height*0.3;
 }
 
 function draw(){
   background(255);
   drawDashes();
+  drawMiddleLine();
+}
+
+function drawMiddleLine(){
+  strokeWeight(1);
+  stroke(0);
+  for(var i = -1; i < 2; i++){
+    line(width*0.5+i*5, height, width*0.5+i*2, middle_line_top);
+  }
+
+  if(middle_line_top > height*0.3)
+    middle_line_top-= 20;
+
 }
 
 function drawDashes(){
