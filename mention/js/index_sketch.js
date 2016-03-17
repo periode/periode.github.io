@@ -39,10 +39,7 @@ var dash_timer;
 var fg_col = 0;
 var bg_col = 255;
 
-var interval_vector = 100;
-
-var middle_line_top;
-var starting_point;
+var single = true;
 
 function setup(){
   var w = windowWidth*0.3;
@@ -55,25 +52,32 @@ function setup(){
   menu_audio = document.getElementById('audio');
   menu_video = document.getElementById('video');
   menu_info = document.getElementById('info');
-  // document.getElementById('title').style.top = height*0.05;
+
+  var t = createVector(1, height*random(0.2, 0.7));
+
+  dashes[0] = new Dash(createVector(1, 0), t, 'down');
+  dashes[1] = new Dash(createVector(1, height), t, 'up');
 }
 
 function draw(){
   background(255);
 
-  line(0, 0, width, height);
+for(var i = 0; i < dashes.length; i++){
+  dashes[i].display();
+}
 
 //TODO: do the sketch for the home page
 // TODO: remove letters from MENTION
-// TODO: add other fontface
-// TODO: switch menu class so that they fade in
 // TODO: define center canvas
 }
 
-function drawInitialSketch(){
-  fill(255);
-  stroke(0);
-  rect(width*0.2, height*0.05, width*0.3, height*0.15);
+function addNewDash(_orig, _dir){
+  if(_dir == 'side'){
+    dashes.push(new Dash(_orig, createVector(_orig.x+width*random(0.08, 0.1), _orig.y)), 'side');
+  }else if(_dir == 'up' || _dir == 'down'){
+    // dashes.push(new Dash(_orig, createVector(_orig.x, 0)), 'up');
+    // dashes.push(new Dash(_orig, createVector(_orig.x, height)), 'down');
+  }
 }
 
 function displayMenu(){

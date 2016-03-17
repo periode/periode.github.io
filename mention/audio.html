@@ -3,19 +3,21 @@
   <title>collective</title>
   <meta charset=utf-8 />
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-  <link href='css/index_style.css' rel='stylesheet' type='text/css' />
+  <link href='css/audio_style.css' rel='stylesheet' type='text/css' />
   <script src='libraries/p5.js'></script>
   <script src='libraries/p5.dom.js'></script>
   <script src='js/audio_sketch.js'></script>
   <script src='js/dash.js'></script>
 </head>
 <body>
-  <a id="title" href="index.html">MENTION</a>
-  <a id="audio" class="selected_link" href="audio.html">audio</a>
-  <a id="video" href="video.html">video</a>
-  <a id="info" href="info.html">info</a>
-  <div id="container">
-
-  </div>
+  <div id="title" onclick="displayMenu()">M_</div>
+  <div id="first"></div>
+  <div id="main"></div>
+  <div class="hidden" id="gabor"> <a href="https://soundcloud.com/mesmarecords">GABOR</a></div>
+  <div class="hidden" id="myles"> <a href="https://soundcloud.com/mylesavery">MYLES AVERY</a></div>
+  <div class="hidden" id="otodojo"> <a href="https://soundcloud.com/otodojo">OTODOJO</a></div>
+  <br>
+  <br>
+  <div class="hidden" id="back"><a href="index.html"><-</a></div>
 </body>
 </html>
