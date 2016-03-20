@@ -41,6 +41,9 @@ var bg_col = 255;
 
 var single = true;
 
+var fg_target;
+var bg_target;
+
 function setup(){
   var w = windowWidth*0.3;
   var h = 45;
@@ -57,31 +60,51 @@ function setup(){
 
   dashes[0] = new Dash(createVector(1, 0), t, 'down');
   dashes[1] = new Dash(createVector(1, height), t, 'up');
+
+  fg_target = 0;
+  bg_target = 255;
+  color_dir = 1;
 }
 
 function draw(){
-  background(255);
+  background(bg_target);
 
-for(var i = 0; i < dashes.length; i++){
-  dashes[i].display();
+strokeWeight(2);
+var coeff = mouseX*0.000005;
+var inc = 29;
+for(var i = 0; i < width; i+=inc){
+  strokeWeight((cos(i*0.02)+2)*3);
+  stroke(255, 120, 120);
+  line(i+cos(i+millis()*coeff)*10, 0, i+cos(i+millis()*coeff)*10, height);
 }
+
+fg_target = min(max(fg_target - 10*color_dir, 0), 255);
+bg_target = min(max(bg_target + 10*color_dir, 0), 255);
 
 //TODO: do the sketch for the home page
 // TODO: remove letters from MENTION
 // TODO: define center canvas
 }
 
-function addNewDash(_orig, _dir){
-  if(_dir == 'side'){
-    dashes.push(new Dash(_orig, createVector(_orig.x+width*random(0.08, 0.1), _orig.y)), 'side');
-  }else if(_dir == 'up' || _dir == 'down'){
-    // dashes.push(new Dash(_orig, createVector(_orig.x, 0)), 'up');
-    // dashes.push(new Dash(_orig, createVector(_orig.x, height)), 'down');
+function mouseReleased(){
+  if(color_dir == 1){
+    console.log('change');
+    displayMenu();
+    color_dir = -1;
+  }else{
+    hideMenu();
+    color_dir = 1;
   }
 }
 
 function displayMenu(){
-  menu_audio.setAttribute('class', 'shown');
-  menu_video.setAttribute('class', 'shown');
-  menu_info.setAttribute('class', 'shown');
+  menu_audio.style.opacity = 1;
+  menu_video.style.opacity = 1;
+  menu_info.style.opacity = 1;
+}
+
+function hideMenu(){
+  menu_audio.style.opacity = 0;
+  menu_video.style.opacity = 0;
+  menu_info.style.opacity = 0;
 }
