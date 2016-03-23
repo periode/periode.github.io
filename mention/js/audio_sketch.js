@@ -13,6 +13,10 @@ var back;
 
 var fg;
 var bg;
+var lerp_val = 1;
+var lerp_inc = 0.05;
+var color_dir = 1;
+
 
 function setup(){
   var w = windowWidth*0.3;
@@ -27,14 +31,14 @@ function setup(){
   back = document.getElementById('back');
 
   fg = color(140, 220, 170);
-  bg = 255;
+  bg = color(255, 255, 255);
 }
 
 function draw(){
-  background(bg);
-  fill(140, 220, 170, 100-map(mouseX, 0, width/2, 0, 100));
-  stroke(140, 220, 170, map(mouseX, 0, width/2, 0, 100));
-  // noStroke();
+  // background(lerpColor(fg, bg, lerp_val));
+  background(255);
+  fill(lerpColor(fg, bg, lerp_val));
+  stroke(lerpColor(bg, fg, lerp_val));
   rectMode(CENTER);
   var s = height/0.5;
   var coeff = 0.0005;
@@ -44,23 +48,19 @@ function draw(){
     rotate(PI/4);
     rect(0, 0, s*noise(i, cos(millis()*coeff)), s*noise(i, cos(millis()*coeff)));
     pop();
-    // triangle(cos(millis()*0.001+i)*width/2+width/2, 0, 0, height/2+cos(millis()*0.001)*height/2, width, height/2+sin(millis()*0.001)*height/2);
   }
 
+  lerp_val += lerp_inc*color_dir;
+  lerp_val = constrain(lerp_val, 0, 1);
 }
 
 function mouseReleased(){
-
-  if(bg == 255){
-    bg = color(140, 220, 170);
-    fg = 255;
+  if(color_dir == 1){
     displayMenu();
   }else{
-    bg = 255;
-    fg = color(140, 220, 170);
     hideMenu();
   }
-
+  color_dir *= -1;
 }
 
 function displayMenu(){

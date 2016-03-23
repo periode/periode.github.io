@@ -41,8 +41,11 @@ var bg_col = 255;
 
 var single = true;
 
-var fg_target;
-var bg_target;
+var fg_col;
+var bg_col;
+
+var lerp_val = 1;
+var lerp_inc = 0.05;
 
 var coeff = 0.0025;
 var inc;
@@ -65,6 +68,10 @@ function setup(){
 
   fg_target = 0;
   bg_target = 255;
+
+  fg_col = color(255, 120, 120);
+  bg_col = color(255, 255, 255);
+
   color_dir = 1;
   inc = Math.floor(random(10, 30));
 }
@@ -74,21 +81,17 @@ window.onmousemove = function(){
 }
 
 function draw(){
-  background(bg_target);
+  background(lerpColor(fg_col, bg_col, lerp_val));
 
 strokeWeight(2);
 
 for(var i = 0; i < width; i+=inc){
   strokeWeight((cos(i*0.02)+2)*3);
-  stroke(255, 120, 120);
+  stroke(lerpColor(bg_col, fg_col, lerp_val));
   line(i+cos(i+millis()*coeff)*10, 0, i+cos(i+millis()*coeff)*10, height);
 }
-
-fg_target = min(max(fg_target - 10*color_dir, 0), 255);
-bg_target = min(max(bg_target + 10*color_dir, 0), 255);
-
-// TODO: remove letters from MENTION
-// TODO: define center canvas
+  lerp_val += lerp_inc*color_dir;
+  lerp_val = constrain(lerp_val, 0, 1);
 }
 
 function mouseReleased(){
