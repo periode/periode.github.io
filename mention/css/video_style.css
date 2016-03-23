@@ -63,8 +63,13 @@ canvas{
   width: 90%;
   font-family: Track;
   color: black;
-  top: 10%;
+
   margin-top: 4%;
+}
+
+#back{
+  position: absolute;
+  bottom:5%;
 }
 
 a{

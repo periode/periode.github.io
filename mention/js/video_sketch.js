@@ -3,7 +3,12 @@ var back;
 
 var color_dir = 1;
 
-var pos = [];
+var dots = [];
+var alphas = [];
+var colors = [];
+var orig;
+var rad;
+var theta = 0;
 
 function setup(){
   var w = windowWidth*0.3;
@@ -15,29 +20,42 @@ function setup(){
   periode = document.getElementById('periode');
   back = document.getElementById('back');
 
-  for(var i = 0; i < 3; i++){
-    pos[i] = [random(width), random(width), random(height), random(height)];
-  }
+  colorMode(HSB, 100);
+
+  orig = createVector(width*0.5, height*0.5);
+  rad = createVector(width*0.3, height*0.2);
+
+  setInterval(addDots, 100);
 }
 
 function draw(){
   background(255);
-  // beginShape();
-  // vertex(width/2, width/2, height/2, height/2);
-  // for(var i = 0; i < pos.length; i++){
-  //   quadraticVertex(pos[i][0], pos[i][1], pos[i][2], pos[i][3]);
-  // }
-  // endShape();
-  noStroke();
-  for(var i = 0; i < 10; i++){
-    fill(120, 180, 240, map(mouseX, 0, width, 10, 180));
-    push();
-    translate(map(mouseY, 0, height*0.5, 1, 3)*i+width*0.1, height/2);
-    rotate(millis()*0.001*i);
-    scale(0.1);
-    arc(0, height, width, height*3, 0, -TWO_PI);
-    pop();
+
+  noFill();
+  rectMode(CENTER);
+  for(var i = 0; i < dots.length; i++){
+    // line(orig.x, orig.y, dots[i].x, dots[i].y);
+    stroke(hue(colors[i]), saturation(colors[i]), brightness(colors[i])*(min(map(mouseX, 0, width*0.5, 0.1, 0.95), 0.95)), alphas[i]*(cos(i+millis()*0.0075)+1));
+
+    if(alphas[i] < 100)
+      alphas[i] += 0.5;
+
+    strokeWeight(1);
+    ellipse(dots[i].x, dots[i].y, 10, 10);
   }
+}
+
+function addDots(){
+  var p = createVector(orig.x + cos(radians(theta))*(rad.x+random(1)), orig.y + sin(radians(theta))*(rad.y+random(1)));
+  var c = color(20+random(-10, 10), 20, 20);
+
+  if(dots.length < 300){
+    dots.push(p);
+    alphas.push(0);
+    colors.push(c);
+    theta += 33;
+  }
+
 }
 
 function mouseReleased(){

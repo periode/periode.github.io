@@ -56,7 +56,7 @@ canvas{
   opacity: 0;
 }
 
-#gabor, #myles, #otodojo, #back{
+#gabor, #myles, #otodojo{
   position: relative;
   float: left;
   left: 3%;
@@ -65,6 +65,17 @@ canvas{
   color: black;
   top: 10%;
   margin-top: 4%;
+}
+
+#back{
+  position: absolute;
+  float: left;
+  left: 3%;
+  width: 90%;
+  font-family: Track;
+  color: black;
+  margin-top: 4%;
+  bottom: 5%;
 }
 
 a{

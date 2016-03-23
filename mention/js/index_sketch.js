@@ -44,6 +44,8 @@ var single = true;
 var fg_target;
 var bg_target;
 
+var coeff = 0.0025;
+var inc;
 function setup(){
   var w = windowWidth*0.3;
   var h = 45;
@@ -64,14 +66,18 @@ function setup(){
   fg_target = 0;
   bg_target = 255;
   color_dir = 1;
+  inc = Math.floor(random(10, 30));
+}
+
+window.onmousemove = function(){
+  coeff = mouseX*0.000005;
 }
 
 function draw(){
   background(bg_target);
 
 strokeWeight(2);
-var coeff = mouseX*0.000005;
-var inc = 29;
+
 for(var i = 0; i < width; i+=inc){
   strokeWeight((cos(i*0.02)+2)*3);
   stroke(255, 120, 120);
@@ -81,7 +87,6 @@ for(var i = 0; i < width; i+=inc){
 fg_target = min(max(fg_target - 10*color_dir, 0), 255);
 bg_target = min(max(bg_target + 10*color_dir, 0), 255);
 
-//TODO: do the sketch for the home page
 // TODO: remove letters from MENTION
 // TODO: define center canvas
 }
