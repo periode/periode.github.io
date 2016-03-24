@@ -20,7 +20,7 @@ var color_dir = 1;
 
 function setup(){
   var w = windowWidth*0.3;
-  var h = 45;
+  var h = windowHeight*0.5;
   var cnv = createCanvas(w, h);
   cnv.position(0, 0);
   cnv.parent('first');
@@ -40,9 +40,9 @@ function draw(){
   fill(lerpColor(fg, bg, lerp_val));
   stroke(lerpColor(bg, fg, lerp_val));
   rectMode(CENTER);
-  var s = height/0.5;
+  var s = height*0.25;
   var coeff = 0.0005;
-  for(var i = 0; i < 10; i++){
+  for(var i = 1; i < 8; i++){
     push();
     translate(width/11+i*width/11, height/2);
     rotate(PI/4);

@@ -12,7 +12,7 @@ var lerp_inc = 0.05;
 
 function setup(){
   var w = windowWidth*0.3;
-  var h = 45;
+  var h = windowHeight*0.5;
   var cnv = createCanvas(w, h);
   cnv.position(0, 0);
   cnv.parent('first');

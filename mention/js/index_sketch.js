@@ -51,7 +51,7 @@ var coeff = 0.0025;
 var inc;
 function setup(){
   var w = windowWidth*0.3;
-  var h = 45;
+  var h = windowHeight*0.5;
   var cnv = createCanvas(w, h);
   cnv.position(0, 0);
   cnv.parent('first');
@@ -74,6 +74,7 @@ function setup(){
 
   color_dir = 1;
   inc = Math.floor(random(10, 30));
+  strokeCap(SQUARE);
 }
 
 window.onmousemove = function(){
@@ -81,14 +82,17 @@ window.onmousemove = function(){
 }
 
 function draw(){
-  background(lerpColor(fg_col, bg_col, lerp_val));
-
+  background(255);
+  noStroke();
+  fill(lerpColor(fg_col, bg_col, lerp_val));
+  ellipse(width*0.5, height*0.5, height, height);
+noFill();
 strokeWeight(2);
 
 for(var i = 0; i < width; i+=inc){
   strokeWeight((cos(i*0.02)+2)*3);
   stroke(lerpColor(bg_col, fg_col, lerp_val));
-  line(i+cos(i+millis()*coeff)*10, 0, i+cos(i+millis()*coeff)*10, height);
+  line(i+cos(i+millis()*coeff)*10, noise(i)*50, i+cos(i+millis()*coeff)*10, height-noise(i)*50);
 }
   lerp_val += lerp_inc*color_dir;
   lerp_val = constrain(lerp_val, 0, 1);

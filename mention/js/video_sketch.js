@@ -10,9 +10,12 @@ var orig;
 var rad;
 var theta = 0;
 
+var lerp_val = 1;
+var lerp_inc = 0.025;
+
 function setup(){
   var w = windowWidth*0.3;
-  var h = 45;
+  var h = windowHeight*0.5;
   var cnv = createCanvas(w, h);
   cnv.position(0, 0);
   cnv.parent('first');
@@ -26,35 +29,48 @@ function setup(){
   rad = createVector(width*0.3, height*0.2);
 
   setInterval(addDots, 50);
+  rectMode(CENTER);
 }
 
 function draw(){
   background(255);
+  fill(lerp(0, 255, lerp_val));
+  noStroke();
+  push();
+  translate(width*0.5, height*0.5);
+  rotate(HALF_PI*0.5);
+  rect(0, 0, width*0.5, width*0.5);
+  pop();
 
   noFill();
   rectMode(CENTER);
+  push();
+  translate(width*0.5, height*0.5);
+  rotate(lerp(PI, 0, lerp_val*lerp_val));
   for(var i = 0; i < dots.length; i++){
     // line(orig.x, orig.y, dots[i].x, dots[i].y);
-    stroke(hue(colors[i]), saturation(colors[i]), brightness(colors[i])*(min(map(mouseX, 0, width*1, 0.1, 0.5), 0.95)), alphas[i]*(cos(i+millis()*0.0075)+1)*map(mouseX, 0, width*0.5, 0, 1));
+    stroke(lerp(255, 0, lerp_val), 10+alphas[i]*(cos(i+millis()*0.0075)+1)*0.25);
+    line(dots[i].x, dots[i].y, 0, lerp(-height*0.25, height*0.25, lerp_val));
+    line(dots[i].x, dots[i].y, 0, lerp(height*0.25, -height*0.25, lerp_val));
 
     if(alphas[i] < 50)
       alphas[i] += 0.25;
 
     strokeWeight(1);
     ellipse(dots[i].x, dots[i].y, 2, 2);
-    stroke(0, 10);
-    line(dots[i].x, dots[i].y, width*0.5, height);
-    line(dots[i].x, dots[i].y, width*0.5, 0);
+
   }
+  pop();
 
-
+  lerp_val += lerp_inc*color_dir;
+  lerp_val = constrain(lerp_val, 0, 1);
 }
 
 function addDots(){
-  var p = createVector(orig.x + cos(radians(theta))*(rad.x+random(1)), orig.y + sin(radians(theta))*(rad.y+random(1)));
+  var p = createVector(cos(radians(theta))*(rad.x+random(1)), sin(radians(theta))*(rad.y+random(1)));
   var c = color(20, 40, 30);
 
-  if(dots.length < 300){
+  if(dots.length < 80){
     dots.push(p);
     alphas.push(0);
     colors.push(c);

@@ -34,7 +34,7 @@ canvas{
   vertical-align: middle;
 }
 
-#first{
+/*#first{
   position: relative;
   float: left;
   background-color: white;
@@ -43,6 +43,19 @@ canvas{
   margin-left: 5%;
   margin-top: 2%;
   margin-right: 50%;
+
+  border: 5px solid black;
+}*/
+
+#first{
+  position: absolute;
+  background-color: white;
+  width: 30%;
+  height: 50%;
+  top: 30%;
+  left: 30%;
+  margin-left: 5%;
+  margin-top: 1.35%;
 
   /*border: 5px solid black;*/
 }
@@ -67,25 +80,20 @@ canvas{
   margin-top: 4%;
 }
 
+.mask{
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  -ms-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+  opacity: 1;
+}
+
 iframe{
-
-}
-
-#iframe_gabor, #iframe_myles, #iframe_otodojo{
-
-}
-
-
-#iframe_gabor{
-
-}
-
-#iframe_myles{
-
-}
-
-#iframe_otodojo{
-
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  width: 20%;
 }
 
 #back{
