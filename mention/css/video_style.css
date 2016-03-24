@@ -81,6 +81,15 @@ canvas{
   margin-top: 4%;
 }
 
+.videos{
+  position: relative;
+  float: left;
+  left: 6%;
+  width: 90%;
+  font-family: Track;
+  color: black;
+}
+
 #back{
   position: absolute;
   bottom:5%;

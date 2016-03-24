@@ -1,5 +1,6 @@
 var periode;
 var back;
+var videos = [];
 
 var color_dir = 1;
 
@@ -22,6 +23,7 @@ function setup(){
 
   periode = document.getElementById('periode');
   back = document.getElementById('back');
+  videos = document.getElementsByClassName('videos');
 
   colorMode(HSB, 100);
 
@@ -57,7 +59,8 @@ function draw(){
       alphas[i] += 0.25;
 
     strokeWeight(1);
-    ellipse(dots[i].x, dots[i].y, 2, 2);
+    stroke(lerp(255, 0, lerp_val), 10+alphas[i]*(cos(i+millis()*0.0075)+1)*map(mouseX, 0, width, 0, 0.25));
+    ellipse(dots[i].x, dots[i].y, 1, 1);
 
   }
   pop();
@@ -70,7 +73,7 @@ function addDots(){
   var p = createVector(cos(radians(theta))*(rad.x+random(1)), sin(radians(theta))*(rad.y+random(1)));
   var c = color(20, 40, 30);
 
-  if(dots.length < 80){
+  if(dots.length < 90){
     dots.push(p);
     alphas.push(0);
     colors.push(c);
@@ -92,10 +95,16 @@ function mouseReleased(){
 
 function displayMenu(){
   periode.style.opacity = 1;
+  for(var i = 0; i < videos.length; i++){
+    videos[i].style.opacity = 1;
+  }
   back.style.opacity = 1;
 }
 
 function hideMenu(){
   periode.style.opacity = 0;
-  back.style.opacity = 0;
+  for(var i = 0; i < videos.length; i++){
+    videos[i].style.opacity = 0;
+  }
+  // back.style.opacity = 0;
 }

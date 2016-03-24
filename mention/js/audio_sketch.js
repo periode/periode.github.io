@@ -29,6 +29,7 @@ function setup(){
   myles = document.getElementById('myles');
   otodojo = document.getElementById('otodojo');
   back = document.getElementById('back');
+  iframe = document.getElementById('iframe');
 
   fg = color(140, 220, 170);
   bg = color(255, 255, 255);
@@ -45,8 +46,12 @@ function draw(){
   for(var i = 1; i < 8; i++){
     push();
     translate(width/11+i*width/11, height/2);
-    rotate(PI/4);
+    rotate(PI/4+constrain(map(mouseX, 0, width, 0, PI), 0, PI)+i*0);
     rect(0, 0, s*noise(i, cos(millis()*coeff)), s*noise(i, cos(millis()*coeff)));
+    rotate(-HALF_PI*0.5);
+    noStroke();
+    fill(255);
+    rect(0, 0, i+1, i+1);
     pop();
   }
 
@@ -63,6 +68,21 @@ function mouseReleased(){
   color_dir *= -1;
 }
 
+function showGabor(){
+  console.log('showing gabor');
+  iframe.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/19124160&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true";
+}
+
+function showMyles(){
+  console.log('showing myles');
+  iframe.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/22203774&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true";
+}
+
+function showOtodojo(){
+  console.log('showing otodojo');
+  iframe.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/2912448&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"
+}
+
 function displayMenu(){
   gabor.style.opacity = 1;
   myles.style.opacity = 1;
@@ -74,5 +94,5 @@ function hideMenu(){
   gabor.style.opacity = 0;
   myles.style.opacity = 0;
   otodojo.style.opacity = 0;
-  back.style.opacity = 0;
+  // back.style.opacity = 0;
 }

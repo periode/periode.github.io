@@ -75,7 +75,7 @@ function displayMenu(){
 
 function hideMenu(){
   statement.style.opacity = 0;
-  back.style.opacity = 0;
+  // back.style.opacity = 0;
 }
 
 
