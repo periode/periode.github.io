@@ -25,7 +25,7 @@ function setup(){
   orig = createVector(width*0.5, height*0.5);
   rad = createVector(width*0.3, height*0.2);
 
-  setInterval(addDots, 100);
+  setInterval(addDots, 50);
 }
 
 function draw(){
@@ -35,19 +35,24 @@ function draw(){
   rectMode(CENTER);
   for(var i = 0; i < dots.length; i++){
     // line(orig.x, orig.y, dots[i].x, dots[i].y);
-    stroke(hue(colors[i]), saturation(colors[i]), brightness(colors[i])*(min(map(mouseX, 0, width*0.5, 0.1, 0.95), 0.95)), alphas[i]*(cos(i+millis()*0.0075)+1));
+    stroke(hue(colors[i]), saturation(colors[i]), brightness(colors[i])*(min(map(mouseX, 0, width*1, 0.1, 0.5), 0.95)), alphas[i]*(cos(i+millis()*0.0075)+1)*map(mouseX, 0, width*0.5, 0, 1));
 
-    if(alphas[i] < 100)
-      alphas[i] += 0.5;
+    if(alphas[i] < 50)
+      alphas[i] += 0.25;
 
     strokeWeight(1);
-    ellipse(dots[i].x, dots[i].y, 10, 10);
+    ellipse(dots[i].x, dots[i].y, 2, 2);
+    stroke(0, 10);
+    line(dots[i].x, dots[i].y, width*0.5, height);
+    line(dots[i].x, dots[i].y, width*0.5, 0);
   }
+
+
 }
 
 function addDots(){
   var p = createVector(orig.x + cos(radians(theta))*(rad.x+random(1)), orig.y + sin(radians(theta))*(rad.y+random(1)));
-  var c = color(20+random(-10, 10), 20, 20);
+  var c = color(20, 40, 30);
 
   if(dots.length < 300){
     dots.push(p);

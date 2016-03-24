@@ -3,7 +3,7 @@ var back;
 
 var lines = [];
 var point;
-var w = 10;
+var step;
 var scroll = 0;
 
 var color_dir = 1;
@@ -21,7 +21,7 @@ function setup(){
   back = document.getElementById('back');
 
   point = createVector(width*0.025, height*0.025);
-
+  step = random(4, 40);
   setInterval(addLine, 5);
 }
 
@@ -40,8 +40,8 @@ function draw(){
 function addLine(){
   var p = createVector(point.x, point.y);
   var c = Math.floor(Math.random()*2);
-  var l = new Line(p, w, c);
-  point.x += w;
+  var l = new Line(p, step, c);
+  point.x += step;
   lines.push(l);
 
   if(point.x > width*0.95){
