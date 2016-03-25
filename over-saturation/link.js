@@ -9,7 +9,7 @@ var Link = function(_pos1, _pos2, _col, _i){
     stroke(red(this.col), blue(this.col), green(this.col), this.alpha);
     line(this.pos1.x, this.pos1.y, this.pos2.x, this.pos2.y);
 
-    this.alpha -= 0.025;
+    this.alpha -= 0.0025;
     if(this.alpha < 0)
       links.splice(this.index, 1);
   }
