@@ -19,7 +19,7 @@ function update(){
     links.splice(0, dots.length);
   }
 
-  if(links.length > 2000){
+  if(links.length > 1500){
     links.splice(0, dots.length*2);
   }
 }
