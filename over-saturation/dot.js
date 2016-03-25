@@ -48,7 +48,7 @@ var Dot = function(_pos, _col, _rad, _index){
       translate(this.position.x, this.position.y);
       rotate(random(PI));
       stroke(this.col);
-      // line(-this.rad*2, 0, this.rad*2, 0);
+      line(-this.rad*2, 0, this.rad*2, 0);
       pop();
     }else{
       // this.rad--;
@@ -143,7 +143,7 @@ var Dot = function(_pos, _col, _rad, _index){
     noStroke();
     push();
     translate(this.position.x, this.position.y);
-    // ellipse(0, 0, 2+this.rad, 2+this.rad);
+    ellipse(0, 0, 2+this.rad, 2+this.rad);
     pop();
 
     // stroke(red(this.col), blue(this.col), green(this.col), 30);

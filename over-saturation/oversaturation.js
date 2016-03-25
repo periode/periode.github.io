@@ -22,6 +22,10 @@ function update(){
   if(links.length > 1500){
     links.splice(0, dots.length*2);
   }
+
+  if(links.length > 2500){
+    links.splice(0, dots.length*4);
+  }
 }
 
 function draw(){
