@@ -65,7 +65,7 @@ function draw(){
   stroke(100);
   ellipse(mouseX, mouseY, 3, 3);
 
-  if(frameRate() < 5){
+  if(frameRate() < 2){
     restart();
   }
 }
