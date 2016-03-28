@@ -90,6 +90,12 @@ canvas{
   color: black;
 }
 
+iframe{
+  position:absolute;
+  left:30%;
+  top:30%;
+}
+
 #back{
   position: absolute;
   bottom:5%;

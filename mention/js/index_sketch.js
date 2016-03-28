@@ -99,8 +99,13 @@ for(var i = 0; i < width; i+=inc){
 }
 
 function mouseReleased(){
+  if(mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height){
+    toggleFade();
+  }
+}
+
+function toggleFade(){
   if(color_dir == 1){
-    console.log('change');
     displayMenu();
     color_dir = -1;
   }else{

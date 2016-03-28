@@ -60,12 +60,19 @@ function draw(){
 }
 
 function mouseReleased(){
+  if(mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height){
+    toggleFade();
+  }
+}
+
+function toggleFade(){
   if(color_dir == 1){
     displayMenu();
+    color_dir = -1;
   }else{
     hideMenu();
+    color_dir = 1;
   }
-  color_dir *= -1;
 }
 
 function showGabor(){
