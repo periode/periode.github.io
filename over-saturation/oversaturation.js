@@ -13,7 +13,7 @@ var stars = [];
 function setup(){
  var cnv = createCanvas(windowWidth, windowHeight);
 
- for(var i = 0; i < 8; i++){
+ for(var i = 0; i < 20; i++){
    stars[i] = createVector(random(width), random(height));
  }
 }
@@ -94,9 +94,13 @@ function debug(){
 
 function drawBackground(){
   background(0, 50);
-  stroke(100);
+  stroke(255, 10);
   stars.forEach(function(e, i, a){
-    point(e.x, e.y);
+    push();
+    translate(e.x, e.y);
+    rotate((i % 2)*HALF_PI);
+    line(-4-(i%3), 0, 4+(i%3), 0);
+    pop();
   });
 }
 
