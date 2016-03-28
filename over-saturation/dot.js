@@ -24,8 +24,12 @@ var Dot = function(_pos, _col, _rad, _index){
   this.max_rad = 20;
 
 
-  this.col = color(red(_col), blue(_col), green(_col));
+  this.col = color(red(_col), green(_col), blue(_col));
   this.rad = _rad;
+
+  this.hadChild = false;
+  this.resetChild = 0;
+  this.resetChildTimer = 60000;
 
   //wander
   this.wander;
@@ -50,8 +54,11 @@ var Dot = function(_pos, _col, _rad, _index){
       stroke(this.col);
       line(-this.rad*2, 0, this.rad*2, 0);
       pop();
-    }else{
-      // this.rad--;
+    }
+
+    if(this.hadChild && millis() - this.resetChild > this.resetChildTimer){
+      this.hadChild = false;
+      this.resetChildTimer *= 1.5;
     }
 
     //TODO: zooming out based on the number of particles introduced
@@ -90,16 +97,16 @@ var Dot = function(_pos, _col, _rad, _index){
   this.bounce = function(){
     var target;
 
-		if(this.position.x > width-this.rad)
+		if(this.position.x > width*0.9-this.rad)
 			target = createVector(this.bounce_coeff, this.velocity.y);
 
-		if(this.position.x < this.rad)
+		if(this.position.x < width*0.1+this.rad)
 			target = createVector(-this.bounce_coeff, this.velocity.y);
 
-		if(this.position.y > height-this.rad)
+		if(this.position.y > height*0.9-this.rad)
 			target = createVector(this.velocity.x, this.bounce_coeff);
 
-		if(this.position.y < this.rad)
+		if(this.position.y < height*0.1+this.rad)
 			target = createVector(this.velocity.x, -this.bounce_coeff);
 
 		if(target != null){
@@ -161,13 +168,30 @@ var Dot = function(_pos, _col, _rad, _index){
           if(!this.closeness[i]){
             this.closeness[i] = true;
           }
-          links.push(new Link(this.position, dots[i].position, this.col, link_index));
-          link_index++;
+
+          if(frameCount % 2 == 0){
+            links.push(new Link(this.position, dots[i].position, this.col, link_index));
+            link_index++;
+          }
+
+
+          if(this.position.dist(dots[i].position) < width*0.05 && !this.hadChild && !dots[i].hadChild && dots.length < 30){
+            addDot(createVector(this.position.x+10, this.position.y+10), color(random(100, 255), random(100, 255), random(100, 255)), 2);
+
+            this.hadChild = true;
+            dots[i].hadChild = true;
+            this.resetChild = millis();
+            dots[i].resetChild = millis();
+          }
         }else{
           if(this.closeness[i])
             this.closeness[i] = false;
         }
       }
     }
+  }
+
+  this.resetChild = function(){
+    this.hadChild = false;
   }
 }

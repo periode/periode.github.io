@@ -5,12 +5,27 @@ var links = [];
 var dot_index = 0;
 var link_index = 0;
 
+var start_time = 0;
+var timer = 2000;
+
+var stars = [];
+
 function setup(){
  var cnv = createCanvas(windowWidth, windowHeight);
 
+ for(var i = 0; i < 8; i++){
+   stars[i] = createVector(random(width), random(height));
+ }
 }
 
 function update(){
+
+  if(millis() - start_time > timer && dots.length < 7){
+    start_time = millis();
+    timer *= 2;
+    addDot(createVector(random(width*0.3, width*0.7), random(height*0.3, height*0.7)), color(random(100, 255), random(100, 255), random(100, 255)), 2);
+  }
+
   dots.forEach(function(e, i, a){
     e.update();
   });
@@ -33,6 +48,10 @@ function draw(){
   drawBackground();
   update();
 
+  splashes.forEach(function(e, i, a){
+    e.display();
+  });
+
   links.forEach(function(e, i, a){
     e.display();
   });
@@ -41,21 +60,44 @@ function draw(){
     e.display();
   });
 
-  debug();
+  // debug();
   noFill();
   stroke(100);
-  ellipse(mouseX, mouseY, 1, 1);
+  ellipse(mouseX, mouseY, 3, 3);
+
+  if(frameRate() < 10){
+    restart();
+  }
+}
+
+function restart(){
+  dots = [];
+  links = [];
+  splashes = [];
+  dots_index = 0;
+  timer = 3000;
+  start_time = millis();
+  for(var i = 0; i < 8; i++){
+    stars[i] = createVector(random(width), random(height));
+  }
 }
 
 function debug(){
   noStroke();
   fill(255);
+  // text(frameRate(), 10, 10);
   text(dots.length, 10, 10);
   text(links.length, 10, 30);
+  text(splashes.length, 10, 50);
+    text(frameRate(), 10, 70);
 }
 
 function drawBackground(){
   background(0, 50);
+  stroke(100);
+  stars.forEach(function(e, i, a){
+    point(e.x, e.y);
+  });
 }
 
 function addDot(pos, col, size){
@@ -66,9 +108,12 @@ function addDot(pos, col, size){
     dots[i].closeness.push(c);
   }
   dot_index++;
+
+  var s = new Splash(pos, col, dot_index);
+  splashes.push(s);
 }
 
 function mouseReleased(){
-  background(0);
-  addDot(createVector(random(width*0.1, width*0.9), random(height*0.1, height*0.9)), color(random(100, 255), random(100, 255), random(100, 255)), 2);
+  // background(0);
+  addDot(createVector(mouseX, mouseY), color(random(100, 255), random(100, 255), random(100, 255)), 2);
 }
