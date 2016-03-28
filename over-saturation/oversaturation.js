@@ -93,7 +93,7 @@ function debug(){
 }
 
 function drawBackground(){
-  background(0, 50);
+  background(0);
   stroke(255, 10);
   stars.forEach(function(e, i, a){
     push();
