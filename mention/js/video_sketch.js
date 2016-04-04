@@ -1,6 +1,7 @@
 var periode;
 var back;
 var videos = [];
+var vid;
 
 var color_dir = 1;
 
@@ -20,6 +21,8 @@ function setup(){
   var cnv = createCanvas(w, h);
   cnv.position(0, 0);
   cnv.parent('first');
+
+  vid = document.getElementById('frame');
 
   periode = document.getElementById('periode');
   back = document.getElementById('back');
@@ -96,6 +99,10 @@ function toggleFade(){
     hideMenu();
     color_dir = 1;
   }
+}
+
+function toggleDistantMemories(){
+  vid.style.display = 'inline';
 }
 
 function displayMenu(){
