@@ -4,7 +4,8 @@ var videos = [];
 var vid;
 
 var distant_memories = 'https://player.vimeo.com/video/149093460';
-var snow = "https://player.vimeo.com/video/153479338";
+var snow = 'https://player.vimeo.com/video/153479338';
+var bibelots = "";//TODO record gabor video
 
 var color_dir = 1;
 
@@ -112,6 +113,12 @@ function toggleDistantMemories(){
 
 function toggleSnow(){
   vid.setAttribute('src', snow);
+  if(vid.style.visibility != 'visible')
+    vid.style.visibility = 'visible';
+}
+
+function toggleBibelots(){
+  vid.setAttribute('src', bibelots);
   if(vid.style.visibility != 'visible')
     vid.style.visibility = 'visible';
 }
