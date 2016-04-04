@@ -3,6 +3,9 @@ var back;
 var videos = [];
 var vid;
 
+var distant_memories = 'https://player.vimeo.com/video/149093460';
+var snow = "https://vimeo.com/153479338";
+
 var color_dir = 1;
 
 var dots = [];
@@ -102,7 +105,15 @@ function toggleFade(){
 }
 
 function toggleDistantMemories(){
-  vid.style.display = 'inline';
+  vid.setAttribute('src', distant_memories);
+  if(vid.style.visibility != 'visible')
+    vid.style.visibility = 'visible';
+}
+
+function toggleSnow(){
+  vid.setAttribute('src', snow);
+  if(vid.style.visibility != 'visible')
+    vid.style.visibility = 'visible';
 }
 
 function displayMenu(){
