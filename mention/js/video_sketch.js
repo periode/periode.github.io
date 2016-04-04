@@ -4,7 +4,7 @@ var videos = [];
 var vid;
 
 var distant_memories = 'https://player.vimeo.com/video/149093460';
-var snow = "https://vimeo.com/153479338";
+var snow = "https://player.vimeo.com/video/153479338";
 
 var color_dir = 1;
 
