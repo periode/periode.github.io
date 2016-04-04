@@ -94,7 +94,7 @@ iframe{
   position:absolute;
   left:30%;
   top:30%;
-  display: none;
+  visibility: hidden;
 }
 
 #back{
