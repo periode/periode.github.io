@@ -11,6 +11,8 @@ var myles;
 var otodojo;
 var back;
 
+var frame;
+
 var fg;
 var bg;
 var lerp_val = 1;
@@ -29,7 +31,7 @@ function setup(){
   myles = document.getElementById('myles');
   otodojo = document.getElementById('otodojo');
   back = document.getElementById('back');
-  iframe = document.getElementById('iframe');
+  frame = document.getElementById('frame');
 
   fg = color(140, 220, 170);
   bg = color(255, 255, 255);
@@ -76,18 +78,21 @@ function toggleFade(){
 }
 
 function showGabor(){
-  console.log('showing gabor');
-  iframe.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/19124160&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true";
+  frame.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/19124160&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true";
+  if(frame.style.visibility != 'visible')
+    frame.style.visibility = 'visible';
 }
 
 function showMyles(){
-  console.log('showing myles');
-  iframe.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/22203774&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true";
+  frame.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/22203774&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true";
+  if(frame.style.visibility != 'visible')
+    frame.style.visibility = 'visible';
 }
 
 function showOtodojo(){
-  console.log('showing otodojo');
-  iframe.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/2912448&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"
+  frame.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/2912448&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"
+  if(frame.style.visibility != 'visible')
+    frame.style.visibility = 'visible';
 }
 
 function displayMenu(){

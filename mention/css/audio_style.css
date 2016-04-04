@@ -91,9 +91,10 @@ canvas{
 
 iframe{
   position: absolute;
-  top: 60%;
-  left: 3%;
+  top: 50%;
+  left: 10%;
   width: 30%;
+  visibility: hidden;
 }
 
 #back{
