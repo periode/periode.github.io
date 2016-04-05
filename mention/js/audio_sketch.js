@@ -19,6 +19,9 @@ var lerp_val = 1;
 var lerp_inc = 0.05;
 var color_dir = 1;
 
+var theta_inc;
+var shape_num;
+
 
 function setup(){
   var w = windowWidth*0.3;
@@ -33,27 +36,37 @@ function setup(){
   back = document.getElementById('back');
   frame = document.getElementById('frame');
 
-  fg = color(140, 220, 170);
-  bg = color(255, 255, 255);
+  theta_inc = random(0.3, 0.8);
+  shape_num = parseInt(random(20, 100));
+
+  fg = color(140, 220, 170, 100);
+  bg = color(255, 255, 255, 100);
 }
 
 function draw(){
   // background(lerpColor(fg, bg, lerp_val));
   background(255);
   fill(lerpColor(fg, bg, lerp_val));
+  // noFill();
   stroke(lerpColor(bg, fg, lerp_val));
   rectMode(CENTER);
   var s = height*0.25;
   var coeff = 0.0005;
-  for(var i = 1; i < 8; i++){
+  for(var i = 1; i < shape_num; i++){
     push();
-    translate(width/11+i*width/11, height/2);
-    rotate(PI/4+constrain(map(mouseX, 0, width, 0, PI), 0, PI)+i*0);
-    rect(0, 0, s*noise(i, cos(millis()*coeff)), s*noise(i, cos(millis()*coeff)));
-    rotate(-HALF_PI*0.5);
-    noStroke();
-    fill(255);
-    rect(0, 0, i+1, i+1);
+    translate(width/2, height/2);
+    rotate(PI/4+constrain(map(mouseX, 0, width, 0, PI), 0, PI)+i);
+    beginShape();
+    scale(0.5+cos(i*millis()*0.000025));
+    for(var theta = 0; theta < TWO_PI; theta += theta_inc){
+      vertex(sin(theta)*i, cos(theta)*i);
+    }
+    endShape(CLOSE);
+    // rect(0, 0, s*noise(i, cos(millis()*coeff)), s*noise(i, cos(millis()*coeff)));
+    // rotate(-HALF_PI*0.5);
+    // noStroke();
+    // fill(255);
+    // rect(0, 0, s*noise(i, cos(millis()*coeff)), s*noise(i, cos(millis()*coeff)));
     pop();
   }
 
