@@ -13,9 +13,11 @@ var stars = [];
 function setup(){
  var cnv = createCanvas(windowWidth, windowHeight);
 
- for(var i = 0; i < 20; i++){
-   stars[i] = createVector(random(width), random(height));
- }
+ // for(var i = 0; i < 20; i++){
+ //   stars[i] = createVector(random(width), random(height));
+ // }
+
+ frameRate(30);
 }
 
 function update(){
@@ -41,6 +43,10 @@ function update(){
   if(links.length > 2500){
     links.splice(0, dots.length*4);
   }
+
+  if(splashes.length > 10){
+    // splashes.splice(0, 1);
+  }
 }
 
 function draw(){
@@ -53,7 +59,7 @@ function draw(){
   });
 
   links.forEach(function(e, i, a){
-    e.display();
+    // e.display();
   });
 
   dots.forEach(function(e, i, a){
@@ -66,7 +72,8 @@ function draw(){
   ellipse(mouseX, mouseY, 3, 3);
 
   if(frameRate() < 2){
-    restart();
+    // restart();
+    links.length = 0;
   }
 }
 
@@ -84,7 +91,7 @@ function restart(){
 
 function debug(){
   noStroke();
-  fill(255);
+  fill(0, 255, 0);
   // text(frameRate(), 10, 10);
   text(dots.length, 10, 10);
   text(links.length, 10, 30);

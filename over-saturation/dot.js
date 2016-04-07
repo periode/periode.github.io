@@ -47,13 +47,16 @@ var Dot = function(_pos, _col, _rad, _index){
     }
 
     if(growing){
-      // this.rad += 1;
+      this.rad += 1;
       push();
       translate(this.position.x, this.position.y);
       rotate(random(PI));
       stroke(this.col);
-      line(-this.rad*2, 0, this.rad*2, 0);
+      // line(-this.rad*2, 0, this.rad*2, 0);
       pop();
+    }else{
+      if(this.rad > 2)
+      this.rad -= 1;
     }
 
     if(this.hadChild && millis() - this.resetChild > this.resetChildTimer){
@@ -146,11 +149,15 @@ var Dot = function(_pos, _col, _rad, _index){
   }
 
   this.display = function(){
-    fill(this.col);
-    noStroke();
+    // fill(this.col);
+    // noStroke();
+    stroke(this.col);
+    noFill();
     push();
     translate(this.position.x, this.position.y);
     ellipse(0, 0, 2+this.rad, 2+this.rad);
+    stroke(0);
+    // point(0, 0);
     pop();
 
     // stroke(red(this.col), blue(this.col), green(this.col), 30);
@@ -169,7 +176,7 @@ var Dot = function(_pos, _col, _rad, _index){
             this.closeness[i] = true;
           }
 
-          if(frameCount % 2 == 0){
+          if(frameCount % 3 == 0){
             links.push(new Link(this.position, dots[i].position, this.col, link_index));
             link_index++;
           }
