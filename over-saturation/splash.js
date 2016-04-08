@@ -3,14 +3,15 @@ var Splash = function(_pos, _col, _index){
   this.position = _pos;
   this.col = _col;
   this.rad = 0;
-  this.alpha = 100;
+  this.alpha = 70;
 
   this.display = function(){
 
     push();
     translate(this.position.x, this.position.y);
     noStroke();
-    fill(red(this.col), green(this.col), blue(this.col), this.alpha*0.25);
+    // fill(red(this.col), green(this.col), blue(this.col), this.alpha*0.25);
+    fill(255, this.alpha);
     ellipse(0, 0, this.rad*0.9, this.rad*0.9);
 
     stroke(red(this.col), green(this.col), blue(this.col), this.alpha);
@@ -22,7 +23,7 @@ var Splash = function(_pos, _col, _index){
 
 
     this.rad+=2;
-    this.alpha-= 0.5;
+    this.alpha-= 0.4;
 
     if(this.alpha < 0)
       splashes.splice(0, 1);

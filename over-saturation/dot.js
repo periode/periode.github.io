@@ -25,6 +25,7 @@ var Dot = function(_pos, _col, _rad, _index){
 
 
   this.col = color(red(_col), green(_col), blue(_col));
+  this.connect_alpha = 0;
   this.rad = _rad;
 
   this.hadChild = false;
@@ -48,11 +49,29 @@ var Dot = function(_pos, _col, _rad, _index){
 
     if(growing){
       // this.rad += 1;
+      if(this.connect_alpha < 150)
+      this.connect_alpha += 5;
+    }else{
+      if(this.connect_alpha > 0)
+        this.connect_alpha -= 5;
+    }
+
+    if(this.connect_alpha > 5){
       push();
       translate(this.position.x, this.position.y);
-      rotate(random(PI));
-      stroke(this.col);
-      line(-this.rad*2, 0, this.rad*2, 0);
+      noFill();
+      strokeWeight(1);
+      rotate(millis()*0.0005);
+
+      // line(-this.rad*2, 0, this.rad*2, 0);
+      for(var i = 0; i < 360; i+=30){
+        stroke(red(this.col), green(this.col), blue(this.col), this.connect_alpha*abs(cos(radians(i+millis()*0.01))));
+        // point(cos(random(TWO_PI))*this.rad*4, sin(random(TWO_PI))*this.rad*4);
+        // point(cos(i)*this.rad*cos(millis()*0.01), sin(i)*this.rad*cos(millis()*0.01));
+        // ellipse(0, 0, this.rad*8*cos(millis()*0.001+i), this.rad*8*cos(millis()*0.005+i));
+        line(cos(radians(i))*this.rad*4, sin(radians(i))*this.rad*4, cos(radians(i))*this.rad*6*abs(cos(i+millis()*0.005)), sin(radians(i))*this.rad*6*abs(cos(i+millis()*0.005)));
+      }
+
       pop();
     }
 
@@ -146,8 +165,8 @@ var Dot = function(_pos, _col, _rad, _index){
   }
 
   this.display = function(){
-    fill(this.col);
-    noStroke();
+    stroke(this.col);
+    noFill();
     push();
     translate(this.position.x, this.position.y);
     ellipse(0, 0, 2+this.rad, 2+this.rad);
@@ -163,7 +182,7 @@ var Dot = function(_pos, _col, _rad, _index){
     for(var i = 0; i < dots.length; i++){
       if(dots[i] != this){
         if(this.position.dist(dots[i].position) < width*0.1){
-          stroke(0);
+          stroke(red(this.col), blue(this.col), green(this.col), 30);
           // line(this.position.x, this.position.y, dots[i].position.x, dots[i].position.y);
           if(!this.closeness[i]){
             this.closeness[i] = true;

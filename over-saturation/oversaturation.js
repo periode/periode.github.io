@@ -32,13 +32,9 @@ function update(){
 
   if(links.length > 1000){
     links.splice(0, dots.length);
-  }
-
-  if(links.length > 1500){
+  }else if(links.length > 1500){
     links.splice(0, dots.length*2);
-  }
-
-  if(links.length > 2500){
+  }else if(links.length > 2500){
     links.splice(0, dots.length*4);
   }
 }
@@ -71,20 +67,20 @@ function draw(){
 }
 
 function restart(){
-  dots = [];
+  // dots = [];
   links = [];
-  splashes = [];
-  dots_index = 0;
-  timer = 3000;
-  start_time = millis();
-  for(var i = 0; i < 8; i++){
-    stars[i] = createVector(random(width), random(height));
-  }
+  // splashes = [];
+  // dots_index = 0;
+  // timer = 3000;
+  // start_time = millis();
+  // for(var i = 0; i < 8; i++){
+  //   stars[i] = createVector(random(width), random(height));
+  // }
 }
 
 function debug(){
   noStroke();
-  fill(255);
+  fill(0, 200, 0);
   // text(frameRate(), 10, 10);
   text(dots.length, 10, 10);
   text(links.length, 10, 30);
