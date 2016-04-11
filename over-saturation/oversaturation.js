@@ -16,6 +16,8 @@ function setup(){
  for(var i = 0; i < 20; i++){
    stars[i] = createVector(random(width), random(height));
  }
+
+ frameRate(35);
 }
 
 function update(){
@@ -23,7 +25,7 @@ function update(){
   if(millis() - start_time > timer && dots.length < 7){
     start_time = millis();
     timer *= 2;
-    addDot(createVector(random(width*0.3, width*0.7), random(height*0.3, height*0.7)), color(random(100, 255), random(100, 255), random(100, 255)), 2);
+    addDot(createVector(random(width*0.3, width*0.7), random(height*0.3, height*0.7)), color(random(100, 255), random(100, 255), random(100, 255)), 4);
   }
 
   dots.forEach(function(e, i, a){
