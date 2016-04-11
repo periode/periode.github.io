@@ -13,11 +13,11 @@ var stars = [];
 function setup(){
  var cnv = createCanvas(windowWidth, windowHeight);
 
- // for(var i = 0; i < 20; i++){
- //   stars[i] = createVector(random(width), random(height));
- // }
+ for(var i = 0; i < 20; i++){
+   stars[i] = createVector(random(width), random(height));
+ }
 
- frameRate(30);
+ frameRate(35);
 }
 
 function update(){
@@ -25,7 +25,7 @@ function update(){
   if(millis() - start_time > timer && dots.length < 7){
     start_time = millis();
     timer *= 2;
-    addDot(createVector(random(width*0.3, width*0.7), random(height*0.3, height*0.7)), color(random(100, 255), random(100, 255), random(100, 255)), 2);
+    addDot(createVector(random(width*0.3, width*0.7), random(height*0.3, height*0.7)), color(random(100, 255), random(100, 255), random(100, 255)), 4);
   }
 
   dots.forEach(function(e, i, a){
@@ -34,18 +34,10 @@ function update(){
 
   if(links.length > 1000){
     links.splice(0, dots.length);
-  }
-
-  if(links.length > 1500){
+  }else if(links.length > 1500){
     links.splice(0, dots.length*2);
-  }
-
-  if(links.length > 2500){
+  }else if(links.length > 2500){
     links.splice(0, dots.length*4);
-  }
-
-  if(splashes.length > 10){
-    // splashes.splice(0, 1);
   }
 }
 
@@ -59,7 +51,7 @@ function draw(){
   });
 
   links.forEach(function(e, i, a){
-    // e.display();
+    e.display();
   });
 
   dots.forEach(function(e, i, a){
@@ -72,26 +64,25 @@ function draw(){
   ellipse(mouseX, mouseY, 3, 3);
 
   if(frameRate() < 2){
-    // restart();
-    links.length = 0;
+    restart();
   }
 }
 
 function restart(){
-  dots = [];
+  // dots = [];
   links = [];
-  splashes = [];
-  dots_index = 0;
-  timer = 3000;
-  start_time = millis();
-  for(var i = 0; i < 8; i++){
-    stars[i] = createVector(random(width), random(height));
-  }
+  // splashes = [];
+  // dots_index = 0;
+  // timer = 3000;
+  // start_time = millis();
+  // for(var i = 0; i < 8; i++){
+  //   stars[i] = createVector(random(width), random(height));
+  // }
 }
 
 function debug(){
   noStroke();
-  fill(0, 255, 0);
+  fill(0, 200, 0);
   // text(frameRate(), 10, 10);
   text(dots.length, 10, 10);
   text(links.length, 10, 30);
