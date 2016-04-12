@@ -27,10 +27,11 @@ var Dot = function(_pos, _col, _rad, _index){
   this.inner_alpha = 0;
   this.max_inner_alpha = 255;
   this.min_inner_alpha = 0;
+  this.alpha = 0;
 
   this.hadChild = false;
   this.resetChild = 0;
-  this.resetChildTimer = 60000;
+  this.resetChildTimer = 20000;
 
   //wander
   this.wander;
@@ -44,7 +45,7 @@ var Dot = function(_pos, _col, _rad, _index){
 Dot.prototype.display = function(){
   noFill();
 
-  stroke(this.col);
+  stroke(red(this.col), green(this.col), blue(this.col), this.alpha);
   fill(red(this.col), green(this.col), blue(this.col), this.inner_alpha);
   push();
   translate(this.position.x, this.position.y);
@@ -144,8 +145,11 @@ Dot.prototype.update = function(){
 
   if(this.hadChild && millis() - this.resetChild > this.resetChildTimer){
     this.hadChild = false;
-    this.resetChildTimer *= 1.5;
+    this.resetChildTimer *= 1.15;
   }
+
+  if(this.alpha < 255)
+    this.alpha += 5;
 
   this.velocity.add(this.acceleration);
   this.velocity.limit(this.maxVelocity);
@@ -192,7 +196,7 @@ Dot.prototype.connectOther = function(){
 
 
         if(this.position.dist(dots[i].position) < width*0.05 && !this.hadChild && !dots[i].hadChild && dots.length < 30){
-          addDot(createVector(this.position.x+10, this.position.y+10), color(random(100, 255), random(100, 255), random(100, 255)), 2);
+          addDot(createVector(this.position.x+10, this.position.y+10), color(random(100, 255), random(100, 255), random(100, 255)), dot_size);
 
           this.hadChild = true;
           dots[i].hadChild = true;

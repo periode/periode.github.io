@@ -6,9 +6,11 @@ var dot_index = 0;
 var link_index = 0;
 
 var start_time = 0;
-var timer = 2000;
+var timer = 3000;
 
 var stars = [];
+
+var dot_size = 4;
 
 function setup(){
  var cnv = createCanvas(windowWidth, windowHeight);
@@ -24,21 +26,25 @@ function update(){
 
   if(millis() - start_time > timer && dots.length < 7){
     start_time = millis();
-    timer *= 2;
-    addDot(createVector(random(width*0.3, width*0.7), random(height*0.3, height*0.7)), color(random(100, 255), random(100, 255), random(100, 255)), 4);
+    timer *= 1.5;
+    addDot(createVector(random(width*0.3, width*0.7), random(height*0.3, height*0.7)), color(random(100, 255), random(100, 255), random(100, 255)), dot_size);
   }
 
   dots.forEach(function(e, i, a){
     e.update();
   });
-
+// fill(255);
   if(links.length > 1000){
-    links.splice(0, dots.length);
+    // text('removing', 100, 100);
+    links.splice(0, 10);
   }else if(links.length > 1500){
-    links.splice(0, dots.length*2);
+    links.splice(0, 100);
   }else if(links.length > 2500){
-    links.splice(0, dots.length*4);
+    links.splice(0, 200);
   }
+
+  if(dots.length > 15)
+    dots.splice(0, 1);
 }
 
 function draw(){
@@ -59,9 +65,9 @@ function draw(){
   });
 
   // debug();
-  noFill();
-  stroke(100);
-  ellipse(mouseX, mouseY, 3, 3);
+  // noFill();
+  // stroke(100);
+  // ellipse(mouseX, mouseY, 3, 3);
 
   if(frameRate() < 2){
     restart();
@@ -117,5 +123,5 @@ function addDot(pos, col, size){
 
 function mouseReleased(){
   // background(0);
-  addDot(createVector(mouseX, mouseY), color(random(100, 255), random(100, 255), random(100, 255)), 2);
+  addDot(createVector(mouseX, mouseY), color(random(100, 255), random(100, 255), random(100, 255)), dot_size);
 }
