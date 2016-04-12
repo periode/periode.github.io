@@ -12,6 +12,8 @@ var stars = [];
 
 var dot_size = 4;
 
+var greetings = ['مرحبا', 'bonjour', 'hello', 'hallo', 'hola', 'হ্যালো', '你好', 'ahoj', 'kamusta', 'Χαίρετε', 'હેલો', 'שלום', 'slav', 'سلام', 'звать', 'hodi', 'வணக்கம்', 'merhaba', 'ہیلو'];
+
 function setup(){
  var cnv = createCanvas(windowWidth, windowHeight);
 
@@ -72,6 +74,16 @@ function draw(){
   if(frameRate() < 2){
     restart();
   }
+
+  drawTitle();
+}
+
+function drawTitle(){
+  noStroke();
+  fill(255);
+  textSize(14);
+  textAlign(CENTER);
+  text('circle around', width*0.5, height*0.05);
 }
 
 function restart(){

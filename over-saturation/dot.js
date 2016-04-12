@@ -6,6 +6,9 @@ var Dot = function(_pos, _col, _rad, _index){
     this.closeness[i] = false;
   }
 
+  this.greeting_alpha = 255;
+  this.greeting = greetings[Math.floor(Math.random()*greetings.length)];
+
   this.position = _pos.copy();
   this.velocity = createVector(0.2+Math.random(), 0.2+Math.random());
 	this.acceleration = createVector(0, 0);
@@ -50,6 +53,14 @@ Dot.prototype.display = function(){
   push();
   translate(this.position.x, this.position.y);
   ellipse(0, 0, 2+this.rad, 2+this.rad);
+
+  if(this.greeting_alpha > 0){
+    textSize(10);
+    noStroke();
+    fill(red(this.col), green(this.col), blue(this.col), this.greeting_alpha);
+    text(this.greeting, 10, 10);
+    this.greeting_alpha -= 4;
+  }
   pop();
 }
 
