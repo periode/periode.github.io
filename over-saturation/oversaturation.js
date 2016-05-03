@@ -12,10 +12,19 @@ var stars = [];
 
 var dot_size = 4;
 
+var titleCol = 255;
+var targetCol = 255;
+var previousCol = targetCol;
+var lerpCol = 0;
+
 var greetings = ['مرحبا', 'bonjour', 'hello', 'hallo', 'hola', 'হ্যালো', '你好', 'ahoj', 'kamusta', 'Χαίρετε', 'હેલો', 'שלום', 'slav', 'سلام', 'звать', 'hodi', 'வணக்கம்', 'merhaba', 'ہیلو'];
 
 function setup(){
  var cnv = createCanvas(windowWidth, windowHeight);
+
+ titleCol = color(0, 0, 0);
+ targetCol = color(255, 255, 255);
+ previousCol = titleCol;
 
  for(var i = 0; i < 20; i++){
    stars[i] = createVector(random(width), random(height));
@@ -29,7 +38,7 @@ function update(){
   if(millis() - start_time > timer && dots.length < 7){
     start_time = millis();
     timer *= 1.5;
-    addDot(createVector(random(width*0.3, width*0.7), random(height*0.3, height*0.7)), color(random(100, 255), random(100, 255), random(100, 255)), dot_size);
+    addDot(createVector(random(width*0.3, width*0.7), random(height*0.3, height*0.7)), color(random(100, 255), random(100, 255), random(100, 245)), dot_size);
   }
 
   dots.forEach(function(e, i, a){
@@ -45,7 +54,7 @@ function update(){
     links.splice(0, 200);
   }
 
-  if(dots.length > 15)
+  if(dots.length > 10)
     dots.splice(0, 1);
 }
 
@@ -80,10 +89,14 @@ function draw(){
 
 function drawTitle(){
   noStroke();
-  fill(255);
-  textSize(14);
+  fill(titleCol);
+  textSize(20);
   textAlign(CENTER);
   text('circle around', width*0.5, height*0.05);
+
+  titleCol = lerpColor(previousCol, targetCol, lerpCol);
+  if(lerpCol < 1)
+    lerpCol += 0.05;
 }
 
 function restart(){
@@ -121,16 +134,23 @@ function drawBackground(){
 }
 
 function addDot(pos, col, size){
-  var d = new Dot(pos, col, size, dot_index);
-  dots.push(d);
-  for(var i = 0; i < dots.length; i++){
-    var c = false;
-    dots[i].closeness.push(c);
-  }
-  dot_index++;
+  if(dots.length < 10){
+    previousCol = color(red(titleCol), green(titleCol), blue(titleCol));
+    targetCol = col;
+    lerpCol = 0;
 
-  var s = new Splash(pos, col, dot_index);
-  splashes.push(s);
+    var d = new Dot(pos, col, size, dot_index);
+
+    dots.push(d);
+    for(var i = 0; i < dots.length; i++){
+      var c = false;
+      dots[i].closeness.push(c);
+    }
+    dot_index++;
+
+    var s = new Splash(pos, col, dot_index);
+    splashes.push(s);
+  }
 }
 
 function mouseReleased(){
