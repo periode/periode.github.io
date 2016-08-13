@@ -1,0 +1,60 @@
+body{
+  margin: 0;
+  padding: 0;
+  font-family: Roboto;
+}
+
+#container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+#main{
+  position: absolute;
+  top: 27%;
+  left: 15%;
+  width: 100%;
+  height: 100%;
+}
+
+#info-container{
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  text-align: right;
+}
+
+#info-display{
+  padding: 10px;
+  font-size: 1.5em;
+}
+
+#info-content{
+  -webkit-transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 0.5s ease-in-out;
+  -o-transition: opacity 0.5s ease-in-out;
+  -ms-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10 0 10 10;
+  border-left: 1px rgb(200, 200, 200) solid;
+}
+
+#footer{
+  position: absolute;
+  bottom: 2%;
+  left: 2%;
+}
+
+canvas{
+  z-index: -2;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+}
