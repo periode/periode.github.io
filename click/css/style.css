@@ -16,6 +16,10 @@ h3 {
 	font-weight: 400;
 }
 
+h5{
+	text-align: right;
+}
+
 p {
 	font-weight: 300;
 }
@@ -62,7 +66,7 @@ a {
 	max-width: 1280px;
 	width: 100%;
 	margin: 0 auto;
-} 
+}
 
 .dancer {
 	display: inline-block;
@@ -116,7 +120,7 @@ a {
 
 	.dancer {
 		display: block;
-		width: 70%; 
+		width: 70%;
 		margin: 0 auto;
 	}
 }
