@@ -101,8 +101,8 @@ var Individual = function(_rad, _pos, _index){
 
 			ellipse(constrain(x, 0, width), constrain(y, 0, height), r, r);
 
-			if(i < 9 && random(1) > 0.925)
-				line(x, y, (noise(millis()*0.0005, this.index+i-1)-0.5)*this.spread, (noise(this.index+i-1, millis()*0.0005)-0.5)*this.spread);
+			if(i < this.pop-1 && random(1) > 0.925)
+				line(x, y, (noise(millis()*0.0005, this.index+i+1)-0.5)*this.spread, (noise(this.index+i+1, millis()*0.0005)-0.5)*this.spread);
 		}
 
 		pop();

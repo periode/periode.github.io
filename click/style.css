@@ -5,6 +5,7 @@ body{
 }
 
 h1{
+  font-weight: 100;
   font-size: 2.3em;
 }
 
@@ -28,6 +29,7 @@ h1{
 }
 
 #info-container{
+  font-weight: 400;
   position: absolute;
   top: 2%;
   right: 2%;
@@ -52,6 +54,7 @@ h1{
 }
 
 #footer{
+  font-weight: 100;
   position: absolute;
   bottom: 2%;
   left: 2%;

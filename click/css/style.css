@@ -17,8 +17,13 @@ h3 {
 }
 
 h5{
+	position: absolute;
+	right: 2%;
+	top: 14%;
 	text-align: right;
+	margin: 0;
 	padding-bottom: 50px;
+	padding-right: 10px;
 }
 
 p {
