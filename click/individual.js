@@ -95,14 +95,14 @@ var Individual = function(_rad, _pos, _index){
 		rotate(this.velocity.heading());
 
 		for(var i = 0; i < this.pop; i++){
-			var x = noise(millis()*0.0005, this.index+i)*this.spread;
-			var y = noise(this.index+i, millis()*0.0005)*this.spread;
+			var x = (noise(millis()*0.0005, this.index+i)-0.5)*this.spread;
+			var y = (noise(this.index+i, millis()*0.0005)-0.5)*this.spread;
 			var r = (this.rad+cos(millis()*0.005+i*10));
 
 			ellipse(constrain(x, 0, width), constrain(y, 0, height), r, r);
 
 			if(i < 9 && random(1) > 0.925)
-				line(x, y, noise(millis()*0.0005, this.index+i+1)*this.spread, noise(this.index+i+1, millis()*0.0005)*this.spread);
+				line(x, y, (noise(millis()*0.0005, this.index+i-1)-0.5)*this.spread, (noise(this.index+i-1, millis()*0.0005)-0.5)*this.spread);
 		}
 
 		pop();

@@ -1,0 +1,122 @@
+body {
+	font-family: 'Roboto Mono';
+	margin: 0;
+}
+
+h1 {
+	font-weight: 100;
+	font-size: 2.5em;
+}
+
+h2 {
+	font-weight: 400;
+}
+
+h3 {
+	font-weight: 400;
+}
+
+p {
+	font-weight: 300;
+}
+
+a {
+	color: #4c4ccb;
+}
+
+.container {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.title {
+	margin-left: 3%;
+}
+
+.creativeTeam {
+	display: block;
+	max-width: 1280px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.creator {
+	display: inline-block;
+    width: 30%;
+    margin: 0 auto;
+    text-align: center;
+    vertical-align: top;
+    margin-left: 2%;
+}
+
+.creator img {
+	width: 100%;
+}
+
+.creator p {
+	padding: 10px;
+}
+
+.performers {
+	display: block;
+	max-width: 1280px;
+	width: 100%;
+	margin: 0 auto;
+} 
+
+.dancer {
+	display: inline-block;
+    width: 17%;
+    margin: 0 auto;
+    text-align: center;
+    vertical-align: top;
+    margin-left: 2%;
+}
+
+.dancer img {
+	width: 100%;
+}
+
+.dancer p {
+	font-size: 14px;
+}
+
+.cta {
+	background-image: url('../images/group.jpg');
+	display: block;
+	width: 100%;
+	margin: 0 auto;
+	height: 500px;
+	overflow: hidden;
+}
+
+.show-info {
+	padding-top: 100px;
+	text-align: center;
+	background-color: rgba(255, 255, 255, .80);
+	width: 100%;
+	margin: 0 auto;
+	height: 500px;
+}
+
+.show-info h1 {
+	font-size: 3em;
+}
+
+.show-info p {
+	font-weight: 600;
+}
+
+@media screen and (max-width: 970px) {
+	.creator {
+		display: block;
+		width: 70%;
+		margin: 0 auto;
+	}
+
+	.dancer {
+		display: block;
+		width: 70%; 
+		margin: 0 auto;
+	}
+}

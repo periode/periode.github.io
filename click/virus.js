@@ -3,6 +3,13 @@ var individuals = [];
 var squares = [];
 var canseek = false;
 
+var roboto;
+
+function preload(){
+	// roboto = loadFont("https://fonts.googleapis.com/css?family=Roboto+Mono");
+}
+
+
 function setup(){
 	var cnv = createCanvas(windowWidth, windowHeight);
 	population = 0;
@@ -53,9 +60,15 @@ function draw(){
 	for(var i = 0; i < squares.length; i++){
 		squares[i].display();
 	}
-	drawBorder();
 	for(var i = 0; i < individuals.length; i++){
 		individuals[i].display();
+	}
+
+	if(p5.Vector.dist(individuals[0].pos, createVector(mouseX, mouseY)) < 100){
+		textFont("Roboto Mono");
+		fill(0);
+		noStroke();
+		text('click to add viruses', mouseX, mouseY);
 	}
 }
 
