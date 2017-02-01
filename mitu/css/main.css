@@ -1,0 +1,47 @@
+.header{
+  /*width: 80%;
+  margin-left: 10%;*/
+
+  height: 100%;
+
+  min-width: 320px;
+  font-size: 128px;
+  border: 2px solid black;
+}
+
+@media (max-width: 420px) { //mobile
+  .header{
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+img.resize{
+    height: auto;
+}
+
+img{
+    height: auto;
+    width: 100%;
+    max-width: 800px;
+    max-height: 540px;
+}
+
+.info{
+  border: 2px solid rgb(220, 220, 200);
+  height: 80%;
+}
+
+.nav{
+  border: 2px solid rgb(200, 220, 220);
+  height: 80%;
+}
+
+.footer{
+  border: 2px solid rgb(220, 200, 220);
+  height: 20%;
+}
+
+li{
+  list-style-type: disc;
+}
