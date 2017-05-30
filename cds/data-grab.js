@@ -1,5 +1,5 @@
 //using this to clean data: http://gsx2json.com/
-var SPREADSHEET_URL = "http://gsx2json.com/api?id=1iqTPWhv5OdzZAR9qzRidtDgpz3u4BGHrykTvtN4QcRo";
+var SPREADSHEET_URL = "https://gsx2json.com/api?id=1iqTPWhv5OdzZAR9qzRidtDgpz3u4BGHrykTvtN4QcRo";
 
 
 function init(){
