@@ -1,0 +1,5 @@
+1iqTPWhv5OdzZAR9qzRidtDgpz3u4BGHrykTvtN4QcRo
+
+http://gsx2json.com/api?id=1iqTPWhv5OdzZAR9qzRidtDgpz3u4BGHrykTvtN4QcRo
+
+https://spreadsheets.google.com/feeds/list/1iqTPWhv5OdzZAR9qzRidtDgpz3u4BGHrykTvtN4QcRo/od6/public/basic?alt=json

@@ -1,0 +1,59 @@
+<html>
+	<head>
+		<title>chapscript demo</title>
+	</head>
+	<body>
+		<div id="poem">
+			They say brave but I don’t want it.<br>
+			Who will we mourn today. Or won’t we.<br>
+			<br>
+			Black all the windows. Lower<br>
+			down the afternoon. I barricade<br>
+			<br>
+			all my belonging. I am mostly never real<br>
+			American or anything<br>
+			<br>
+			availing. But I do take. And take<br>
+			what’s given. The smell of blood.<br>
+			<br>
+			I breathe it in. The dirt so thick with our good<br>
+			fortune. And who pays for it. And what am I<br>
+			<br>
+			but fear, but wanting. I’ll bite<br>
+			the feeding hand until I’m fed<br>
+			<br>
+			and buried. In the shining day.<br>
+			All deadly good<br>
+			<br>
+			intentions. A catalogue of virtues.<br>
+			This is how I’ll disappear.<br>
+		</div>
+		<br>
+		<br>
+		<br>
+		<div id="legend">
+			aubade, by camille rankine
+		</div>
+	<script>
+var poem = document.getElementById("poem")
+var characters = ['<', '>', '/', '=', '\\', '"']
+function replace(){
+	if(Math.random() < 0.05){
+
+var text = poem.innerText
+var rand = Math.floor(Math.random()*text.length)
+	var t1 = text.slice(0, rand)
+	var t2 = text.slice(rand, text.length)
+	var replaced_text = t1 + characters[Math.floor(Math.random()*characters.length)] + t2
+//var replaced_text = text.replace(text[Math.floor(Math.random()*text.length)], characters[Math.floor(Math.random()*characters.length)])
+poem.innerText = replaced_text
+}
+}
+
+setInterval(replace, 100)
+
+document.body.onwheel =  replace
+	</script>
+	</body>
+</html>
+	
