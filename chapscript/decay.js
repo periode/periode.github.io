@@ -97,7 +97,6 @@ decay = () =>{
 			insertThroughout(word)
 		}
 	}
-
 }
 
 interrupt = () => {
