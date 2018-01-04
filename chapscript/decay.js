@@ -14,6 +14,7 @@ let replacements = {
 }
 
 let subtexts = {
+	'who':' who',
 	'indigo': 'women dye indigo men pour metal',
 	'climacteric': 'climacteric/tipping point',
 	'patriot': 'patriot and refugee make each other',
@@ -29,6 +30,7 @@ let subtexts = {
 	'culture': '<i>Culture of One, by Alice Notley',
 	'rights': 'From Civil Rights to Human Rights: Martin Luther King Jr., and the Struggle for Economic Justice by Thomas F. Jackson',
 	'pulp':'‘A Crack in an Antarctic Ice Shelf Grew 17 Miles in the Last Two Months’ by Jugal K. Patel, <i>NY Times</i>, February 7, 2017',
+	'oh':' oh!',
 	'autology': '<i>The Empire of Live</i> by Elizabeth Povinelli',
 	'blues': '‘Why Do Ladies Sing the Blues? Indigo Dyeing, Cloth Production, and Gender Symbolism in Kodi’ by Janet Hoskins in <i>Cloth and Human Experience</i>'
 }
@@ -43,8 +45,8 @@ init = () => {
 
 	poem = document.getElementById("poem")
 
-	//setInterval(replace, 100)
-	//document.body.onwheel =  replace
+	//setInterval(interrupt, 100)
+	//document.body.onwheel =  interrupt
 	setupListeners()
 }
 
@@ -65,7 +67,7 @@ setupListeners = () => {
 			if(line_inserts[i].className){
 				let tag = line_inserts[i].className.split(' ')[2]
 				let repl = subtexts[tag]
-				line_inserts[i].addEventListener('click', ()=>{addText(tag, repl)});
+				line_inserts[i].addEventListener('click', ()=>{insertLine(tag, repl)});
 			}
 		}
 
@@ -78,7 +80,7 @@ setupListeners = () => {
 		}
 }
 
-replace = () => {
+interrupt = () => {
 	if(Math.random() < 0.05){
 		var text = poem.innerHTML
 		var rand = Math.floor(Math.random()*text.length)
@@ -88,12 +90,6 @@ replace = () => {
 		poem.innerHTML = replaced_text
 	}
 }
-
-//duplicate instances of a word
-duplicateInstance = (base_el, els) => {
-
-}
-
 
 //replace word by another word
 replaceWord = (tag, repl) => {
@@ -106,9 +102,15 @@ replaceWord = (tag, repl) => {
 }
 
 //add subtext to line
-addText = (tag, addition) => {
-	document.getElementById(tag).innerHTML = "<br>"+addition+"<br>"
-	document.getElementById(tag).setAttribute('id', 'decayed')
+insertLine = (tag, addition, line_break) => {
+	let el = document.getElementById(tag)
+	if(el == null) return
+
+	if(tag != "oh" && tag != "who")
+		el.innerHTML = "<br>"+addition+"<br>"
+	else
+		el.innerHTML = addition
+	el.setAttribute('id', 'decayed')
 }
 
 //insert things throughout poem
