@@ -48,7 +48,7 @@ init = () => {
 	poem = document.getElementById("poem")
 	all = document.querySelectorAll("body *")
 
-	// setInterval(interrupt, 200)
+	setInterval(interrupt, 300)
 	document.body.onwheel = decay
 	setupListeners()
 }
