@@ -1,4 +1,4 @@
-let poem
+let poem, all
 
 let characters = ['<', '>', '/', '=', '\\', '"']
 
@@ -46,8 +46,9 @@ let line_inserts, word_inserts, word_replacements
 init = () => {
 
 	poem = document.getElementById("poem")
+	all = document.querySelectorAll("body *")
 
-	setInterval(interrupt, 200)
+	// setInterval(interrupt, 200)
 	document.body.onwheel = decay
 	setupListeners()
 }
@@ -80,9 +81,9 @@ setupListeners = () => {
 }
 
 decay = () =>{
-	interrupt()
 
-	if(Math.random() < 0.25){
+
+	if(Math.random() < 0.9){
 		for(line of line_inserts){
 			insertLine(line)
 		}
@@ -97,16 +98,23 @@ decay = () =>{
 			insertThroughout(word)
 		}
 	}
+
+	interrupt()
 }
 
 interrupt = () => {
-	if(Math.random() < 0.05){
-		var text = poem.innerHTML
-		var rand = Math.floor(Math.random()*text.length)
-		var t1 = text.slice(0, rand)
-		var t2 = text.slice(rand, text.length)
-		var replaced_text = t1 + characters[Math.floor(Math.random()*characters.length)] + t2
-		poem.innerHTML = replaced_text
+	for(one of all){
+		if(Math.random() < 0.045){
+			let child = document.createElement('span')
+			let text = one.innerHTML
+			let rand = Math.floor(Math.random()*text.length)
+			let t1 = text.slice(0, rand)
+			let t2 = text.slice(rand, text.length)
+			let replaced_text = t1 + characters[Math.floor(Math.random()*characters.length)] + t2
+			child.innerHTML = replaced_text
+			one.innerText = ''
+			one.appendChild(child)
+		}
 	}
 }
 
@@ -129,13 +137,14 @@ insertLine = (origin) => {
 
 	let tag = origin.tag
 	let addition = origin.repl
-
 	let el = document.getElementById(tag)
 	if(el == null) return
 
-	if(tag != "oh" && tag != "who")
-		el.innerHTML = "<br>"+addition+"<br>"
-	else
+	if(tag != "oh" && tag != "who"){
+		let rep = document.createElement('span')
+		rep.innerHTML = "<br>"+addition+"<br>"
+		el.append(rep)
+	}else
 		el.innerHTML = addition
 
 	el.setAttribute('id', 'decayed')
@@ -157,5 +166,5 @@ checkVisible = (elm) =>{
 	if(elm == null || elm == "null") return
 	var rect = elm.getBoundingClientRect();
 
-	return rect.bottom > 0 && rect.top < (window.innerHeight || document.documentElement.clientHeight)*0.75
+	return rect.top < (window.innerHeight || document.documentElement.clientHeight)*0.35
 }
