@@ -1,9 +1,10 @@
 <html>
 	<head>
+		<meta charset="utf-8"></meta>
 		<title>chapscript demo</title>
 		<script src="decay.js"></script>
 	</head>
-	<body>
+	<body onload="init()">
 		<div id="poem">
 			SIGN CLIMACTERIC<br>
 			<br>
@@ -18,7 +19,7 @@
 			<br>
 			who no longer labors<br>
 			<br>
-			<span class="replaceable">who</span> takes in chemically<br>
+			<span class="replaceable duplicate">who</span> takes in chemically<br>
 			<br>
 			so altered as to placate<br>
 			<br>
@@ -26,9 +27,9 @@
 			<br>
 			who studies fear who<br>
 			<br>
-			<span class="replaceable insert-line">sweats again sweats</span><br>
+			<span class="replaceable replace-word sweat"><span class="sweat">sweats</span> again <span class="sweat">sweats</span></span><br>
 			<br>
-			to see the world swerve<br>
+			<span class="see">to see</span> the world swerve<br>
 			<br>
 			who lives as lacuna asks<br>
 			<br>
@@ -44,7 +45,8 @@
 			<br>
 			she<br>
 			<br>
-			<span class="replaceable insert-line-subtext">poured without spilling</span><br>
+			<span class="replaceable insert-line indigo">poured without spilling</span><br>
+			<span id="indigo"></span>
 			<br>
 			smelted with no faults<br>
 			<br>
@@ -52,7 +54,7 @@
 			<br>
 			told who<br>
 			<br>
-			wears a syndrome of <span class="replaceable">climacteric</span><br>
+			wears a syndrome of <span class="replaceable replace-word climacteric"><span class="climacteric">climacteric</span></span><br>
 			<br>
 			the antonym of apex<br>
 			<br>
@@ -67,7 +69,8 @@
 			<br>
 			who masks who<br>
 			<br>
-			refugee patriot never <span class="replaceable insert-line-subtext">individual</span><br>
+			refugee patriot never <span class="replaceable insert-line patriot">individual</span><br>
+			<span id="patriot"></span>
 			<br>
 			pathos unmaking liberty making<br>
 			<br>
@@ -79,9 +82,9 @@
 			<br>
 			finds her mother revolting<br>
 			<br>
-			I am not your mother<br>
+			<i><span class="replaceable replace-word mother"><span class="mother">I am not your mother</span></span></i><br>
 			<br>
-			because daughter <span class="replaceable replace">skin</span><br>
+			because daughter <span class="replaceable replace-word skin">skin</span><br>
 			<br>
 			thinks too much of loss<br>
 			<br>
@@ -135,19 +138,19 @@
 			<br>
 			because wisdom is not<br>
 			<br>
-			who gifts but who savors<br>
+			who <span class="gift">gifts</span> but who savors<br>
 			<br>
 			the edit of their demand<br>
 			<br>
 			<br>
-			SIGN climacteric<br>
+			SIGN <span class="climacteric">climacteric</span><br>
 			<br>
 			<br>
 			SIGN see peri-<br>
 			<br>
 			menopausal word 	DIS-<br>
 			<br>
-			appointment     <span class="replaceable replace">INSIGNIA</span><br>
+			appointment     <span class="replaceable replace-word insignia"><span class="insignia">INSIGNIA</span></span><br>
 			<br>
 			<br>
 			see INSIGNIA body of meno-<br>
@@ -156,11 +159,11 @@
 			<br>
 			stench of over-stamping signage<br>
 			<br>
-			lit up <span class="replaceable">to see</span> too much<br>
+			lit up <span class="replaceable replace-word see"><span class="see">to see</span></span> too much<br>
 			<br>
 			earth<br>
 			<br>
-			to see what speech removal<br>
+			<span class="see">to see</span> what <span class="speech">speech</span> removal<br>
 			<br>
 			tells<br>
 			<br>
@@ -170,7 +173,7 @@
 			<br>
 			away from<br>
 			<br>
-			<span class="replaceable insert">away</span><br>
+			<span class="replaceable insert dis">away</span><br>
 			<br>
 			<br>
 			mothers<br>
@@ -209,34 +212,47 @@
 			words trending now:<br>
 			<br>
 			<br>
-			<span class="replaceable insert-line-subtext">pundit tycoon cudgel</span><br>
+			<span class="replaceable insert-line tycoon">pundit tycoon cudgel</span><br>
+			<div id="tycoon"></div>
 			<br>
 			<br>
 			as between life and death<br>
 			<br>
-			she experiments <span class="replaceable insert-throughout">with</span><br>
+			she experiments <span class="replaceable insert-line with">with</span><br>
+			<span id="with"></span>
 			<br>
 			two sets of numbers<br>
+			<span id="with"></span>
 			<br>
 			count up or down<br>
+			<span id="with"></span>
 			<br>
 			to environmental end<br>
+			<span id="with"></span>
 			<br>
 			in sharp actual sight<br>
+			<span id="with"></span>
 			<br>
 			sinking into planet skin<br>
+			<span id="with"></span>
 			<br>
 			back into placenta skin<br>
+			<span id="with"></span>
 			<br>
 			into the glow of algal bloom<br>
+			<span id="with"></span>
 			<br>
 			recovering the polluted<br>
+			<span id="with"></span>
 			<br>
 			burning personal trouble<br>
+			<span id="with"></span>
 			<br>
 			down from the inside<br>
+			<span id="with"></span>
 			<br>
 			to the rough edge of<br>
+			<span id="with"></span>
 			<br>
 			big ethics I turn<br>
 			<br>
@@ -261,17 +277,20 @@
 			<br>
 			for a sure system of making<br>
 			<br>
-			that includes <span class="replaceable replace">giving away</span><br>
+			that includes <span class="replaceable replace-word gift">giving away</span><br>
 			<br>
 			<br>
 			<br>
+			<i>
 			Good or bad, I’m happy to welcome both.<br>
 			<br>
 			I don’t hear with my ears, I don’t see with my eyes.<br>
 			<br>
 			A voice speaks inside my heart,<br>
 			<br>
-			My jewel-lamp burns bright even in a rampaging <span class="replaceable insert-line">wind</span>.<br>
+			My jewel-lamp burns bright even in a rampaging <span class="replaceable insert-line wind">wind</span>.<br>
+			<span id="wind"></span>
+			</i>
 			<br>
 			<br>
 			<br>
@@ -299,15 +318,16 @@
 			<br>
 			today testifying her<br>
 			<br>
-			<span class="replaceable replace-style">speech</span> of the change<br>
+			<span class="replaceable replace-word speech"><span class="speech">speech</span></span> of the change<br>
 			<br>
-			speech as a claim as ripe<br>
+			<span class="speech">speech</span> as a claim as ripe<br>
 			<br>
 			for murdering the service<br>
 			<br>
 			of accumulating for him oh!<br>
 			<br>
-			the dream of youth <span class="replaceable insert-line">extracts</span><br>
+			the dream of youth <span class="replaceable insert-line extract">extracts</span><br>
+			<span id="extract"></span>
 			<br>
 			and drills out divides up<br>
 			<br>
@@ -332,6 +352,7 @@
 			she sings<br>
 			<br>
 			<br>
+			<i>
 			All for you, baby, all for you<br>
 			<br>
 			All for you, baby, all for you<br>
@@ -354,7 +375,8 @@
 			<br>
 			I’ll give my precious life up for you<br>
 			<br>
-			All for <span class="replaceable insert-line">you</span>.<br>
+			All for <span class="replaceable insert-line sung">you</span>.</i><br>
+			<span id="sung"></span>
 			<br>
 			<br>
 			you wondering if she<br>
@@ -381,7 +403,7 @@
 			<br>
 			because you finally see<br>
 			<br>
-			you feel <span class="replaceable insert-random">days</span><br>
+			you feel <span class="replaceable insert inaudible">days</span><br>
 			<br>
 			as a soft brush<br>
 			<br>
@@ -431,11 +453,13 @@
 			<br>
 			resources so evenly<br>
 			<br>
-			whose <span class="replaceable insert-line-main">curriculum of loss</span><br>
+			whose <span class="replaceable insert-line cadmium">curriculum of loss</span><br>
+			<span id="cadmium"></span>
 			<br>
 			teaches how to<br>
 			<br>
-			<span class="replaceable insert-line">DIS-</span><br>
+			<span class="replaceable insert-line whales">DIS-</span><br>
+			<span id="whales"></span>
 			<br>
 			<br>
 			to go further<br>
@@ -531,11 +555,12 @@
 			<br>
 			a need to surface all the reserves<br>
 			<br>
-			in a stir of our sweat<br>
+			in a stir of our <span class="sweat">sweat</span><br>
 			<br>
 			a DNA tangle too impure<br>
 			<br>
-			<span class="replaceable insert-line">for screens for maps</span><br>
+			<span class="replaceable insert-line maps">for <span class="screen">screens</span> for maps</span><br>
+			<span class="maps"></span>
 			<br>
 			at the airport<br>
 			<br>
@@ -547,7 +572,7 @@
 			<br>
 			placing my palms under her arms<br>
 			<br>
-			her sweat through silk flowing<br>
+			her <span class="sweat">sweat</span> through silk flowing<br>
 			<br>
 			into me<br>
 			<br>
@@ -555,7 +580,8 @@
 			<br>
 			never knowing each other knowing<br>
 			<br>
-			<span class="replaceable insert-line">everything</span><br>
+			<span class="replaceable insert-line airport">everything</span><br>
+			<span class="airport"></span>
 			<br>
 			<br>
 			you of too many days<br>
@@ -614,7 +640,7 @@
 			DIS-<br>
 			<br>
 			<br>
-			<span class="replaceable insert-random">until her freedom is finally<br>
+			<span class="replaceable insert freedom">until her freedom is finally<br>
 			<br>
 			to know their freedom was never<br>
 			<br>
@@ -640,7 +666,8 @@
 			<br>
 			and now this research<br>
 			<br>
-			radiates onto her and from <span class="replaceable insert-line">her</span><br>
+			radiates onto her and from <span class="replaceable insert-line rights">her</span><br>
+			<span id="rights"></span>
 			<br>
 			this fact glides as she thinks this<br>
 			<br>
@@ -658,7 +685,8 @@
 			<br>
 			as her heat of clarity rose<br>
 			<br>
-			as her heart <span class="replaceable insert-line">electric</span><br>
+			as her heart <span class="replaceable insert-line network">electric</span><br>
+			<span id="network"></span>
 			<br>
 			melted the whiteboard<br>
 			<br>
@@ -699,7 +727,7 @@
 			<br>
 			verve of youth their<br>
 			<br>
-			screens shut their <span class="replaceable insert-line">screens</span><br>
+			<span class="screen">screens</span> shut their <span class="replaceable replace-word screen"><span class="screen">screens</span></span><br>
 			<br>
 			demand violence<br>
 			<br>
@@ -707,7 +735,8 @@
 			<br>
 			to recycle her scoffing<br>
 			<br>
-			at their easy concern for <span class="replaceable">pulp</span><br>
+			at their easy concern for <span class="replaceable insert-line pulp">pulp</span><br>
+			<span id="pulp"></span>
 			<br>
 			<br>
 			please put away your<br>
@@ -798,7 +827,8 @@
 			<br>
 			so she walked<br>
 			<br>
-			out from under <span class="replaceable">autology</span><br>
+			out from under <span class="replaceable insert-line autology">autology</span><br>
+			<span id="autology"></span>
 			<br>
 			into a net<br>
 			<br>
@@ -806,7 +836,8 @@
 			<br>
 			in steady never-night re-<br>
 			<br>
-			reinterpreting <span class="replaceable">she</span><br>
+			reinterpreting <span class="replaceable insert-line blues">she</span><br>
+			<span id="blues"></span>
 			<br>
 			saying<br>
 			<br>
@@ -826,4 +857,3 @@
 		</div>
 	</body>
 </html>
-	
