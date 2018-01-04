@@ -3,20 +3,20 @@ let poem
 let characters = ['<', '>', '/', '=', '\\', '"']
 
 let replacements = {
-	'sweat':'vaso-motor system glitch/evolution',
-	'mother': 'versus progeny',
-	'skin': 'paper',
-	'see': 'to touch',
-	'insignia': '<s>insignia</s>',
-	'gift': 'I feel a gift is difficult',
-	'speech': '<s>speech</s>',
-	'screen': 'screens [See the <a href="https://enoughproject.org/files/CorporateRankings2012.pdf">2012 Conflict Minerals Electronics Company Ranking</a>]'
+	'_sweat':'vaso-motor system glitch/evolution',
+	'_climateric': 'climacteric/tipping point',
+	'_mother': 'versus progeny',
+	'_skin': 'paper',
+	'_see': 'to touch',
+	'_insignia': '<s>INSIGNIA</s>',
+	'_gift': 'I feel a gift is difficult',
+	'_speech': '<s>speech</s>',
+	'_screen': 'screens [See the <a href="https://enoughproject.org/files/CorporateRankings2012.pdf">2012 Conflict Minerals Electronics Company Ranking</a>]'
 }
 
 let subtexts = {
 	'who':' who',
 	'indigo': 'women dye indigo men pour metal',
-	'climacteric': 'climacteric/tipping point',
 	'patriot': 'patriot and refugee make each other',
 	'tycoon': 'referring to the 2016 US presidential election',
 	'with':'between',
@@ -41,43 +41,60 @@ let inserts = {
 	'freedom': 'until her freedom is finally<br><br>to know their freedom was never<br><br>	for her<br>'
 }
 
+let line_inserts, word_inserts, word_replacements
+
 init = () => {
 
 	poem = document.getElementById("poem")
 
 	//setInterval(interrupt, 100)
-	//document.body.onwheel =  interrupt
+	document.body.onwheel = decay
 	setupListeners()
 }
 
 setupListeners = () => {
 
-		let word_replacements = document.querySelectorAll('.replace-word')
-		for(i in word_replacements){
-			if(word_replacements[i].className){
-				let tag = word_replacements[i].className.split(' ')[2]
-				let repl = replacements[tag]
-				word_replacements[i].addEventListener('click', ()=>{replaceWord(tag, repl)})
-			}
+		word_replacements = document.getElementsByClassName('replace-word')
+		for(word of word_replacements){
+			let tag = word.className.split(' ')[2]
+			let repl = replacements[tag]
 
+			word.tag = tag
+			word.repl = repl
 		}
 
-		let line_inserts = document.querySelectorAll('.insert-line')
-		for(i in line_inserts){
-			if(line_inserts[i].className){
-				let tag = line_inserts[i].className.split(' ')[2]
-				let repl = subtexts[tag]
-				line_inserts[i].addEventListener('click', ()=>{insertLine(tag, repl)});
-			}
+		line_inserts = document.getElementsByClassName('insert-line')
+		for(line of line_inserts){
+			let tag = line.className.split(' ')[2]
+			let repl = subtexts[tag]
+
+			line.tag = tag
+			line.repl = repl
 		}
 
-		let word_inserts = document.querySelectorAll('.insert')
-		for(i in word_inserts){
-			if(word_inserts[i].className){
-				let tag = word_inserts[i].className.split(' ')[2]
-				word_inserts[i].onclick = function(){insertThroughout(inserts[tag])}
-			}
+		word_inserts = document.getElementsByClassName('insert')
+		for(word of word_inserts){
+			let tag = word.className.split(' ')[2]
+			word.repl = inserts[tag]
 		}
+}
+
+decay = () =>{
+	interrupt()
+
+	if(Math.random() < 0.2){
+		for(line of line_inserts){
+			insertLine(line)
+		}
+
+		for(word of word_inserts){
+			insertThroughout(word)
+		}
+
+		for(word of word_replacements){
+			replaceWord(word)
+		}
+	}
 }
 
 interrupt = () => {
@@ -92,17 +109,25 @@ interrupt = () => {
 }
 
 //replace word by another word
-replaceWord = (tag, repl) => {
-	let all_words = document.querySelectorAll(".sweat")
-	console.log(all_words);
-	for(index in all_words){
-			all_words[index].innerHTML = repl
-	}
+replaceWord = (origin) => {
+	if(!checkVisible(origin)) return
 
+	if(origin.tag != undefined){
+		let tag = origin.tag.replace('_', '')
+		let all_words = document.getElementsByClassName(tag)
+		for(word of all_words){
+				word.innerHTML = origin.repl
+		}
+	}
 }
 
 //add subtext to line
-insertLine = (tag, addition, line_break) => {
+insertLine = (origin) => {
+	if(!checkVisible(origin)) return
+
+	let tag = origin.tag
+	let addition = origin.repl
+
 	let el = document.getElementById(tag)
 	if(el == null) return
 
@@ -110,15 +135,25 @@ insertLine = (tag, addition, line_break) => {
 		el.innerHTML = "<br>"+addition+"<br>"
 	else
 		el.innerHTML = addition
+
 	el.setAttribute('id', 'decayed')
 }
 
 //insert things throughout poem
-insertThroughout = (word) => {
+insertThroughout = (origin) => {
+	if(!checkVisible(origin)) return
+
 	let all_words = poem.innerHTML.split(' ')
 	let r = Math.floor(Math.random()*all_words.length)
-	// all_words[r] = "DIS-" + all_words[r]
-	// poem.innerHTML = all_words
-	poem.innerHTML = poem.innerHTML.replace(all_words[r], "DIS-" + all_words[r])
+
+	poem.innerHTML = poem.innerHTML.replace(all_words[r], origin.repl + all_words[r])
 	setupListeners()
+}
+
+
+checkVisible = (elm) =>{
+	if(elm == null || elm == "null") return
+	var rect = elm.getBoundingClientRect();
+
+	return rect.bottom > 0 && rect.top < (window.innerHeight || document.documentElement.clientHeight)*0.5
 }
