@@ -98,7 +98,6 @@ decay = () =>{
 		}
 	}
 
-	}
 }
 
 interrupt = () => {
