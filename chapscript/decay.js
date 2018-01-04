@@ -47,7 +47,7 @@ init = () => {
 
 	poem = document.getElementById("poem")
 
-	//setInterval(interrupt, 100)
+	setInterval(interrupt, 200)
 	document.body.onwheel = decay
 	setupListeners()
 }
@@ -82,18 +82,22 @@ setupListeners = () => {
 decay = () =>{
 	interrupt()
 
-	if(Math.random() < 0.2){
+	if(Math.random() < 0.25){
 		for(line of line_inserts){
 			insertLine(line)
-		}
-
-		for(word of word_inserts){
-			insertThroughout(word)
 		}
 
 		for(word of word_replacements){
 			replaceWord(word)
 		}
+	}
+
+	if(Math.random() < 0.15){
+		for(word of word_inserts){
+			insertThroughout(word)
+		}
+	}
+
 	}
 }
 
@@ -155,5 +159,5 @@ checkVisible = (elm) =>{
 	if(elm == null || elm == "null") return
 	var rect = elm.getBoundingClientRect();
 
-	return rect.bottom > 0 && rect.top < (window.innerHeight || document.documentElement.clientHeight)*0.5
+	return rect.bottom > 0 && rect.top < (window.innerHeight || document.documentElement.clientHeight)*0.75
 }
