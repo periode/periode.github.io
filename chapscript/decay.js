@@ -11,7 +11,7 @@ let replacements = {
 	'_insignia': '<s>INSIGNIA</s>',
 	'_gift': 'I feel a gift is difficult',
 	'_speech': '<s>speech</s>',
-	'_screen': 'screens [See the <a href="https://enoughproject.org/files/CorporateRankings2012.pdf">2012 Conflict Minerals Electronics Company Ranking</a>]'
+	'_minerals': 'screens [See the <a href="https://enoughproject.org/files/CorporateRankings2012.pdf">2012 Conflict Minerals Electronics Company Ranking</a>]'
 }
 
 let subtexts = {
@@ -42,6 +42,11 @@ let inserts = {
 }
 
 let line_inserts, word_inserts, word_replacements
+
+let replacement_prob = 0.9
+let insert_prob = 0.11
+let interrupt_prob = 0.045
+let element_height = 0.7
 
 init = () => {
 
@@ -83,7 +88,7 @@ setupListeners = () => {
 decay = () =>{
 
 
-	if(Math.random() < 0.9){
+	if(Math.random() < replacement_prob){
 		for(line of line_inserts){
 			insertLine(line)
 		}
@@ -93,7 +98,7 @@ decay = () =>{
 		}
 	}
 
-	if(Math.random() < 0.15){
+	if(Math.random() < insert_prob){
 		for(word of word_inserts){
 			insertThroughout(word)
 		}
@@ -104,7 +109,7 @@ decay = () =>{
 
 interrupt = () => {
 	for(one of all){
-		if(Math.random() < 0.045){
+		if(Math.random() < interrupt_prob){
 			let child = document.createElement('span')
 			let text = one.innerHTML
 			let rand = Math.floor(Math.random()*text.length)
@@ -166,5 +171,5 @@ checkVisible = (elm) =>{
 	if(elm == null || elm == "null") return
 	var rect = elm.getBoundingClientRect();
 
-	return rect.top < (window.innerHeight || document.documentElement.clientHeight)*0.35
+	return rect.top < (window.innerHeight || document.documentElement.clientHeight)*element_height
 }
