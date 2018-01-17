@@ -45,13 +45,13 @@ let line_inserts, word_inserts, word_replacements
 
 let replacement_prob = 0.9
 let insert_prob = 0.11
-let interrupt_prob = 0.045
+let interrupt_prob = 0.0045
 let element_height = 0.7
 
 init = () => {
 
 	poem = document.getElementById("poem")
-	all = document.querySelectorAll("body *")
+	all = document.getElementsByClassName("modifiable")
 
 	setInterval(interrupt, 300)
 	document.body.onwheel = decay
@@ -81,6 +81,7 @@ setupListeners = () => {
 		word_inserts = document.getElementsByClassName('insert')
 		for(word of word_inserts){
 			let tag = word.className.split(' ')[2]
+			word.tag = tag
 			word.repl = inserts[tag]
 		}
 }
@@ -158,6 +159,10 @@ insertLine = (origin) => {
 //insert things throughout poem
 insertThroughout = (origin) => {
 	if(!checkVisible(origin)) return
+	if(origin.tag == "freedom"){
+		if(Math.random() < 0.9)
+			return
+	}
 
 	let all_words = poem.innerHTML.split(' ')
 	let r = Math.floor(Math.random()*all_words.length)
