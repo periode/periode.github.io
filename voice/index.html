@@ -1,0 +1,55 @@
+<html>
+<head>
+	<script type="text/javascript" src="./lib/p5.min.js"></script>
+	<script type="text/javascript" src="./lib/p5.speech.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+	<link rel="stylesheet" href="style.css"/>
+	<title>regex</title>
+</head>
+<body>
+	<h1>REGULAR VOICE</h1>
+	<div id="container">
+		<div id="left">
+			<div id="raw_text">
+				<span class="section-title">write</span>
+				<textarea rows="30" cols="20" id="input_text_holder" value="you are listening to regular expressions" onfocus="isInputting()" onblur="isNotInputting()">hello, , , again, , , , you are listening to, , ,  regular expressions, , , , , a show about, , , , , , , digital songs, , , , for human, ears</textarea><br>
+				<button onclick="saveText()" style="width: 100%">save text (S)</button>
+			</div>
+			
+			<div id="settings">
+					<span class="label">volume</span> <span class="value" id="volume_value">0.7</span><br />
+					<input type="range" min="0.0" value="0.7" max="1.0" step="0.025" list="volume_marks" oninput="updateVolume(value)"><br />
+					<datalist id="volume_marks">
+						<option>0.7</option>
+					</datalist>
+					
+					
+					<span class="label">rate</span>  <span class="value" id="rate_value">0.65</span><br />
+					<input type="range" min="0.0" value="0.9" max="1.0" step="0.025" list="rate_marks" oninput="updateRate(value)" ></input><br>
+					<datalist id="rate_marks">
+						<option>0.9</option>
+					</datalist>
+					
+					<!-- <span class="label">pitch</span><br />
+					<input type="range" min="0.1" max="1.0" value="1" step="0.01" oninput="updatePitch(value)"></input> <span class="value" id="pitch_value">1.0</span><br> -->
+			</div>
+		</div>
+		
+
+		<div id="right">
+			<div id="saved_text">
+				<span  class="section-title">read</span>
+				<div id="saved_text_holder" class="wrapword">
+				</div>
+				<button onclick="readFullText()" style="width: 100%">read all (F)</button><br />
+				<br />
+				<button class="controls" onclick="pause()">||</button>
+				<button class="controls" onclick="resume()">></button>
+				<button class="controls" onclick="hardStop()">X</button>
+			</div>
+		</div>
+
+
+	</div>
+</body>
+</html>
