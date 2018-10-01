@@ -18,7 +18,7 @@ document.addEventListener('load', function(){
 });
 
 function setup(){
-	voice = new p5.Speech('Vicki');
+	voice = new p5.Speech('Thomas');
 	voice.interrupt = true;
 	voice.setVolume(0.7);
 	voice.setRate(0.9);
